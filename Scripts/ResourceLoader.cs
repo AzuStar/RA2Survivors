@@ -4,7 +4,7 @@ using Godot;
 
 namespace RA2Survivors
 {
-    public static class GlobalVariables
+    public static class ResourceLoader
     {
         private static readonly Dictionary<string, string> ENTITY_PATHS = new Dictionary<
             string,
@@ -32,10 +32,10 @@ namespace RA2Survivors
         public static T LoadEntity<T>(string entityName)
             where T : RigidBody3D
         {
-            return ResourceLoader
-                .Load<PackedScene>(
+            return Godot
+                .ResourceLoader.Load<PackedScene>(
                     ENTITY_PATHS[entityName],
-                    cacheMode: ResourceLoader.CacheMode.Reuse
+                    cacheMode: Godot.ResourceLoader.CacheMode.Reuse
                 )
                 .Instantiate<T>();
         }
@@ -63,8 +63,11 @@ namespace RA2Survivors
             {
                 config = expOrbConfigs[expOrbConfigs.Length - 1];
             }
-            ExpOrb expOrb = ResourceLoader
-                .Load<PackedScene>(config.scenePath, cacheMode: ResourceLoader.CacheMode.Reuse)
+            ExpOrb expOrb = Godot
+                .ResourceLoader.Load<PackedScene>(
+                    config.scenePath,
+                    cacheMode: Godot.ResourceLoader.CacheMode.Reuse
+                )
                 .Instantiate<ExpOrb>();
             expOrb.expAmount = expAmount;
             return expOrb;

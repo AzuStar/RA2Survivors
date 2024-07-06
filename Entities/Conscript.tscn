@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqs7r5utsw7my"]
+[gd_scene load_steps=6 format=3 uid="uid://bqs7r5utsw7my"]
 
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="1_eotvh"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Conscript.cs" id="1_ypyyu"]
 [ext_resource type="Texture2D" uid="uid://c8q57hodnui4p" path="res://Assets/Units/cons/cons.png" id="2_6ma6h"]
+[ext_resource type="Script" path="res://Scripts/Weapons/AK47.cs" id="4_bab6a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx663"]
 
@@ -29,3 +30,6 @@ texture = ExtResource("2_6ma6h")
 hframes = 12
 vframes = 12
 script = ExtResource("1_eotvh")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_bab6a")
