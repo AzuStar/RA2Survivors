@@ -1,12 +1,9 @@
 using Godot;
 
-namespace RASurvivors
+namespace RA2Survivors
 {
-    public partial class Player : CharacterBody3D
+    public partial class Player : Entity
     {
-        [Export]
-        public double speed = 200;
-
         private Vector3 _velocity = Vector3.Zero;
 
         public override void _Ready() { }
@@ -33,9 +30,11 @@ namespace RASurvivors
                 direction.X += 1;
             }
             direction = direction.Normalized();
-            Vector3 horizontalVelocity = direction * (float)speed * (float)delta;
+            Vector3 horizontalVelocity = direction * (float)stats.movementSpeed;
             _velocity.X = horizontalVelocity.X;
             _velocity.Z = horizontalVelocity.Z;
+
+            GD.Print(Transform.Origin);
 
             Velocity = _velocity;
             MoveAndSlide();
