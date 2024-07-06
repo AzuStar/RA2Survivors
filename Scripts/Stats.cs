@@ -2,7 +2,7 @@ using Godot;
 
 namespace RA2Survivors
 {
-    public class Stats
+    public struct Stats
     {
         public double attackSpeed;
         public double damage;

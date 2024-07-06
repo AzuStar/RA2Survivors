@@ -4,6 +4,8 @@ namespace RA2Survivors
 {
     public partial class Player : Entity
     {
+        public override EEntityType associatedEntity => EEntityType.Conscript;
+
         private Vector3 _velocity = Vector3.Zero;
 
         public override void _Ready() { }
@@ -33,8 +35,6 @@ namespace RA2Survivors
             Vector3 horizontalVelocity = direction * (float)stats.movementSpeed;
             _velocity.X = horizontalVelocity.X;
             _velocity.Z = horizontalVelocity.Z;
-
-            GD.Print(Transform.Origin);
 
             Velocity = _velocity;
             MoveAndSlide();

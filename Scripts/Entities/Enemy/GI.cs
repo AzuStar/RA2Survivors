@@ -4,6 +4,8 @@ namespace RA2Survivors
 {
     public partial class GI : Enemy
     {
+        public override EEntityType associatedEntity => EEntityType.GI;
+
         public override void _Ready()
         {
             base._Ready();
@@ -20,8 +22,6 @@ namespace RA2Survivors
         public override void _PhysicsProcess(double delta)
         {
             base._PhysicsProcess(delta);
-
-            GD.Print(Transform.Origin);
         }
     }
 }
