@@ -7,29 +7,17 @@ namespace RA2Survivors
         public override void _Ready()
         {
             base._Ready();
-            GamemodeLevel1.Instance.totalEnemiesCount++;
-            GamemodeLevel1.Instance.enemyCount[(int)associatedEntity]++;
+            GamemodeLevel1.instance.totalEnemiesCount++;
+            GamemodeLevel1.instance.enemyCount[(int)associatedEntity]++;
         }
-
-        // public override void _PhysicsProcess(double delta)
-        // {
-        //     if (GamemodeLevel1.Instance.player == null)
-        //         return;
-
-        //     Vector3 direction = (
-        //         GamemodeLevel1.Instance.player.GlobalTransform.Origin - GlobalTransform.Origin
-        //     ).Normalized();
-
-        //     Vector3 horizontalVelocity = direction * (float)stats.movementSpeed;
-        // }
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)
         {
-            if (GamemodeLevel1.Instance.player == null)
+            if (GamemodeLevel1.instance.player == null)
                 return;
 
             Vector3 direction = (
-                GamemodeLevel1.Instance.player.GlobalTransform.Origin - GlobalTransform.Origin
+                GamemodeLevel1.instance.player.GlobalTransform.Origin - GlobalTransform.Origin
             ).Normalized();
             Vector3 velocity = direction * (float)stats.movementSpeed;
             state.LinearVelocity = velocity;
@@ -37,8 +25,8 @@ namespace RA2Survivors
 
         protected override void Dispose(bool disposing)
         {
-            GamemodeLevel1.Instance.totalEnemiesCount--;
-            GamemodeLevel1.Instance.enemyCount[(int)associatedEntity]--;
+            GamemodeLevel1.instance.totalEnemiesCount--;
+            GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
             base.Dispose(disposing);
         }
     }

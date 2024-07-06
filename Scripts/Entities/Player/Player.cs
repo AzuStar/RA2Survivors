@@ -37,25 +37,6 @@ namespace RA2Survivors
             _velocity.Z = horizontalVelocity.Z;
 
             state.LinearVelocity = _velocity;
-
-            // if (MoveAndSlide())
-            // PushEntities();
         }
-
-        // public void PushEntities()
-        // {
-        //     for (int i = 0; i < GetSlideCollisionCount(); i++)
-        //     {
-        //         KinematicCollision3D collision = GetSlideCollision(i);
-        //         if (collision.GetCollider() is Enemy)
-        //         {
-        //             Enemy enemy = (Enemy)collision.GetCollider();
-        //             Vector3 pushDirection = (
-        //                 collision.GetPosition() - GlobalTransform.Origin
-        //             ).Normalized();
-        //             enemy.Velocity = pushDirection * (float)10f;
-        //         }
-        //     }
-        // }
     }
 }

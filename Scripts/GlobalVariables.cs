@@ -35,5 +35,7 @@ namespace RA2Survivors
         }
 
         public static EEntityType SelectedCharacter = EEntityType.Conscript;
+
+        // public static ExpOrb CreateExpOrb(double expAmount) { }
     }
 }
