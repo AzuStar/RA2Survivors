@@ -8,17 +8,8 @@ size = Vector3(100, 0.01, 100)
 
 [node name="Root" type="Node3D"]
 
-[node name="Gamemode" type="Node" parent="."]
-script = ExtResource("1_6tjb4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
-shape = SubResource("BoxShape3D_f3aqj")
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,3 +22,12 @@ grow_vertical = 0
 value = 50.0
 show_percentage = false
 script = ExtResource("2_qoepl")
+
+[node name="Gamemode" type="Node" parent="."]
+script = ExtResource("1_6tjb4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
+shape = SubResource("BoxShape3D_f3aqj")

@@ -19,8 +19,11 @@ shape = SubResource("BoxShape3D_rx663")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 8, 7)
+projection = 1
+size = 10.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09035, 0)
 pixel_size = 0.1
 texture = ExtResource("2_6ma6h")
 hframes = 12
