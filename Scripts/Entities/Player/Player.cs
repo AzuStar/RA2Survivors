@@ -7,8 +7,12 @@ namespace RA2Survivors
         public override EEntityType associatedEntity => EEntityType.Conscript;
 
         private Vector3 _velocity = Vector3.Zero;
+        protected RA2Sprite3D Sprite;
 
-        public override void _Ready() { }
+        public override void _Ready()
+        {
+            Sprite = (RA2Sprite3D)FindChild("Sprite3D");
+        }
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)
         {
@@ -37,6 +41,62 @@ namespace RA2Survivors
             _velocity.Z = horizontalVelocity.Z;
 
             state.LinearVelocity = _velocity;
+
+            // if (MoveAndSlide())
+            // PushEntities();
+
+            if (_velocity.X == 0 && _velocity.Z == 0)
+            {
+                Sprite.PlayAnim("face_s");
+            }
+            else if (_velocity.X == 0 && _velocity.Z < 0)
+            {
+                Sprite.PlayAnim("run_n");
+            }
+            else if (_velocity.X < 0 && _velocity.Z < 0)
+            {
+                Sprite.PlayAnim("run_nw");
+            }
+            else if (_velocity.X < 0 && _velocity.Z == 0)
+            {
+                Sprite.PlayAnim("run_w");
+            }
+            else if (_velocity.X < 0 && _velocity.Z > 0)
+            {
+                Sprite.PlayAnim("run_sw");
+            }
+            else if (_velocity.X == 0 && _velocity.Z > 0)
+            {
+                Sprite.PlayAnim("run_s");
+            }
+            else if (_velocity.X > 0 && _velocity.Z > 0)
+            {
+                Sprite.PlayAnim("run_se");
+            }
+            else if (_velocity.X > 0 && _velocity.Z == 0)
+            {
+                Sprite.PlayAnim("run_e");
+            }
+            else if (_velocity.X > 0 && _velocity.Z < 0)
+            {
+                Sprite.PlayAnim("run_ne");
+            }
         }
+
+        // public void PushEntities()
+        // {
+        //     for (int i = 0; i < GetSlideCollisionCount(); i++)
+        //     {
+        //         KinematicCollision3D collision = GetSlideCollision(i);
+        //         if (collision.GetCollider() is Enemy)
+        //         {
+        //             Enemy enemy = (Enemy)collision.GetCollider();
+        //             Vector3 pushDirection = (
+        //                 collision.GetPosition() - GlobalTransform.Origin
+        //             ).Normalized();
+        //             enemy.Velocity = pushDirection * (float)10f;
+        //         }
+        //     }
+        // }
     }
 }
