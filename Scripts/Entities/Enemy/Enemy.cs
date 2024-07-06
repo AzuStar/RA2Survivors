@@ -11,7 +11,19 @@ namespace RA2Survivors
             GamemodeLevel1.Instance.enemyCount[(int)associatedEntity]++;
         }
 
-        public override void _PhysicsProcess(double delta)
+        // public override void _PhysicsProcess(double delta)
+        // {
+        //     if (GamemodeLevel1.Instance.player == null)
+        //         return;
+
+        //     Vector3 direction = (
+        //         GamemodeLevel1.Instance.player.GlobalTransform.Origin - GlobalTransform.Origin
+        //     ).Normalized();
+
+        //     Vector3 horizontalVelocity = direction * (float)stats.movementSpeed;
+        // }
+
+        public override void _IntegrateForces(PhysicsDirectBodyState3D state)
         {
             if (GamemodeLevel1.Instance.player == null)
                 return;
@@ -19,6 +31,8 @@ namespace RA2Survivors
             Vector3 direction = (
                 GamemodeLevel1.Instance.player.GlobalTransform.Origin - GlobalTransform.Origin
             ).Normalized();
+            Vector3 velocity = direction * (float)stats.movementSpeed;
+            state.LinearVelocity = velocity;
         }
 
         protected override void Dispose(bool disposing)

@@ -6,7 +6,12 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_q3wk1"]
 
-[node name="Conscript" type="CharacterBody3D"]
+[node name="Conscript" type="RigidBody3D"]
+mass = 100.0
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze_mode = 1
 script = ExtResource("1_ypyyu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

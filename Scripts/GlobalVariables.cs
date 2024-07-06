@@ -23,13 +23,13 @@ namespace RA2Survivors
         };
 
         public static T LoadEntity<T>(string entityName)
-            where T : CharacterBody3D
+            where T : RigidBody3D
         {
             return GD.Load<PackedScene>(ENTITY_PATHS[entityName]).Instantiate<T>();
         }
 
         public static T LoadEntity<T>(EEntityType entityType)
-            where T : CharacterBody3D
+            where T : RigidBody3D
         {
             return LoadEntity<T>(ENTITY_NAMES[entityType]);
         }

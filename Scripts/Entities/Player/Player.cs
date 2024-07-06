@@ -10,7 +10,7 @@ namespace RA2Survivors
 
         public override void _Ready() { }
 
-        public override void _PhysicsProcess(double delta)
+        public override void _IntegrateForces(PhysicsDirectBodyState3D state)
         {
             // Handle movement input
             Vector3 direction = Vector3.Zero;
@@ -36,8 +36,26 @@ namespace RA2Survivors
             _velocity.X = horizontalVelocity.X;
             _velocity.Z = horizontalVelocity.Z;
 
-            Velocity = _velocity;
-            MoveAndSlide();
+            state.LinearVelocity = _velocity;
+
+            // if (MoveAndSlide())
+            // PushEntities();
         }
+
+        // public void PushEntities()
+        // {
+        //     for (int i = 0; i < GetSlideCollisionCount(); i++)
+        //     {
+        //         KinematicCollision3D collision = GetSlideCollision(i);
+        //         if (collision.GetCollider() is Enemy)
+        //         {
+        //             Enemy enemy = (Enemy)collision.GetCollider();
+        //             Vector3 pushDirection = (
+        //                 collision.GetPosition() - GlobalTransform.Origin
+        //             ).Normalized();
+        //             enemy.Velocity = pushDirection * (float)10f;
+        //         }
+        //     }
+        // }
     }
 }
