@@ -11,9 +11,10 @@ namespace RA2Survivors
             instance = this;
         }
 
-        public static void SetExp(float exp)
+        public static void SetExp(double exp, double nextLevel)
         {
             instance.Value = exp;
+            instance.MaxValue = nextLevel;
         }
     }
 }

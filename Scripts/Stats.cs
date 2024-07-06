@@ -14,7 +14,7 @@ namespace RA2Survivors
 
         public double expDropped;
         public double currentExp;
-        public double level;
+        public int level;
 
         public double expGainRate;
 
