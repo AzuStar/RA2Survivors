@@ -16,6 +16,7 @@ script = ExtResource("1_mt6vv")
 shape = SubResource("BoxShape3D_rx663")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00373054, -0.00363064, 0.506036)
 pixel_size = 0.1
 texture = ExtResource("2_5c8xf")
 hframes = 12
