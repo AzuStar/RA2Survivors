@@ -19,6 +19,24 @@ namespace RA2Survivors
             stats.health = stats.maxHealth;
 
             Sprite.AnimDefinitions.Add(
+                "death",
+                new RA2SpriteAnim()
+                {
+                    StartFrame = 56,
+                    EndFrame = 56+14,
+                    Loop = false
+                }
+            );
+            Sprite.AnimDefinitions.Add(
+                "death2",
+                new RA2SpriteAnim()
+                {
+                    StartFrame = 71,
+                    EndFrame = 71+14,
+                    Loop = false
+                }
+            );
+            Sprite.AnimDefinitions.Add(
                 "face_s",
                 new RA2SpriteAnim()
                 {
