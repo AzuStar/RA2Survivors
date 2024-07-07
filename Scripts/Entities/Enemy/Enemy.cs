@@ -108,6 +108,14 @@ namespace RA2Survivors
             GamemodeLevel1.instance.enemies.Remove(this);
             GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
             GamemodeLevel1.instance.player.AddExp(stats.expDropped);
+            if (GD.RandRange(0, 1) == 0 ? false : true)
+            {
+                Sprite.PlayAnim("death");
+            }
+            else
+            {
+                Sprite.PlayAnim("death2");
+            }
         }
     }
 }

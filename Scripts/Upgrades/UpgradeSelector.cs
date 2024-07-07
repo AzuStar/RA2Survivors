@@ -35,6 +35,7 @@ namespace RA2Survivors
             {
                 button.QueueFree();
             }
+            instance.buttons.Clear();
         }
     }
 }

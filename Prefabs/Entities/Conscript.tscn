@@ -12,20 +12,20 @@ mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
+freeze = true
 freeze_mode = 1
-custom_integrator = true
 script = ExtResource("1_k31pl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_r0a6y")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 8, 7)
+transform = Transform3D(1, 0, 0, 0, 0.0174524, 0.999848, 0, -0.999848, 0.0174524, 0, 8, 0)
 projection = 1
-size = 20.0
+size = 60.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09035, -0.4398)
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, -0.9, 0)
 pixel_size = 0.1
 texture = ExtResource("2_b1nn0")
 hframes = 12
