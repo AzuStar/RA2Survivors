@@ -18,7 +18,7 @@ script = ExtResource("1_mt6vv")
 shape = SubResource("CylinderShape3D_ishly")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004, 0.506)
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, -0.75, 0)
 pixel_size = 0.1
 texture = ExtResource("2_5c8xf")
 hframes = 12

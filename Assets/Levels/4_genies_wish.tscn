@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://duogcxa51rmup"]
+
+[ext_resource type="PackedScene" uid="uid://d2ox3s71l12wn" path="res://Assets/Levels/4_genies_wish.blend" id="1_2ekq5"]
+[ext_resource type="Texture2D" uid="uid://bos8see1gvmeg" path="res://Assets/Levels/4_genies_wish.png" id="2_ralnl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm6is"]
+shading_mode = 0
+albedo_texture = ExtResource("2_ralnl")
+
+[node name="4_genies_wish" instance=ExtResource("1_2ekq5")]
+
+[node name="Grid" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rm6is")
