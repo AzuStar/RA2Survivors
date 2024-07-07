@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bakls0qxpv1lo"]
+[gd_scene load_steps=9 format=3 uid="uid://bakls0qxpv1lo"]
 
 [ext_resource type="Script" path="res://Scripts/GamemodeLevel1.cs" id="1_6tjb4"]
 [ext_resource type="Script" path="res://Scripts/PauseService.cs" id="1_rw6an"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="3_a3ylo"]
 [ext_resource type="Theme" uid="uid://dtj7boqn5vo7r" path="res://HealthTheme.tres" id="3_bccbv"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeSelector.cs" id="4_aq6wt"]
+[ext_resource type="PackedScene" uid="uid://duogcxa51rmup" path="res://Assets/Levels/4_genies_wish.tscn" id="7_ck3a1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f3aqj"]
 size = Vector3(100, 0.01, 100)
@@ -72,3 +73,5 @@ shape = SubResource("BoxShape3D_f3aqj")
 [node name="Label3D" type="Label3D" parent="."]
 visible = false
 text = "-20"
+
+[node name="4_genies_wish" parent="." instance=ExtResource("7_ck3a1")]

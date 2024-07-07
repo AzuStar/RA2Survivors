@@ -108,9 +108,9 @@ namespace RA2Survivors
 
             state.LinearVelocity = movementVelocity;
 
-            Freeze = movementVelocity.X == 0 && movementVelocity.Z == 0;
+            Freeze = movementVelocity.Length() < 0.01;
 
-            if (movementVelocity.X == 0 && movementVelocity.Z == 0)
+            if (Freeze)
             {
                 Sprite.PlayAnim("face_s");
             }
