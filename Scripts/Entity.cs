@@ -74,6 +74,7 @@ namespace RA2Survivors
                 c.QueueFree();
             }
             OnDying();
+            LinearVelocity = Vector3.Zero;
 
             SceneTreeTimer recycleTim = GetTree().CreateTimer(0.75f);
             recycleTim.Timeout += () => QueueFree();

@@ -8,32 +8,32 @@ namespace RA2Survivors
     public partial class GamemodeLevel1 : Node
     {
         public static GamemodeLevel1 instance { get; private set; }
-        public WaveConfig[] waveConfigs = new WaveConfig[]
+        public WaveConfig[] waveConfigs =
         {
             new WaveConfig
             {
-                enemyConfig = new WaveEnemyConfig[]
-                {
+                enemyConfig =
+                [
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 50,
+                        minEnemies = 1,
                         chancePastMin = 0.1f
                     }
-                },
+                ],
                 waveDuration = 301
             },
             new WaveConfig
             {
-                enemyConfig = new WaveEnemyConfig[]
-                {
+                enemyConfig =
+                [
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
                         minEnemies = 10,
                         chancePastMin = 0.1f
                     }
-                },
+                ],
                 waveDuration = 30
             }
         };

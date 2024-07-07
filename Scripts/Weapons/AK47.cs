@@ -24,8 +24,7 @@ namespace RA2Survivors
         {
             foreach (var t in target)
             {
-                GD.Print($"AK47 shoot {t.Name} to death!");
-                t.Die();
+                owner.DealDamage(t, owner.stats.damage * damageMultiplier);
             }
         }
 

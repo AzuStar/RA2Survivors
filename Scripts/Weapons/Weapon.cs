@@ -83,9 +83,13 @@ namespace RA2Survivors
             _reloadTimeout -= delta;
             if (_reloadTimeout <= 0)
             {
+                _selectedTargets = GetTargets();
+                if (_selectedTargets.Count == 0)
+                {
+                    return;
+                }
                 _reloadTimeout = reloadSpeed / owner.stats.attackSpeed;
                 _burstsLeft = burstCount;
-                _selectedTargets = GetTargets();
                 currentState = EWeaponState.Shooting;
             }
         }
