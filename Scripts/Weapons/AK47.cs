@@ -11,7 +11,7 @@ namespace RA2Survivors
             damageMultiplier = 0.33;
             burstCount = 3;
             burstDelay = 0.05;
-            reloadSpeed = 0.25;
+            reloadSpeed = 0.95;
             multishot = 1;
         }
 
@@ -25,7 +25,7 @@ namespace RA2Survivors
             foreach (var t in target)
             {
                 GD.Print($"AK47 shoot {t.Name} to death!");
-                t.QueueFree();
+                t.Die();
             }
         }
 

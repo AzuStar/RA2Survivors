@@ -6,7 +6,7 @@ namespace RA2Survivors
     {
         public double attackSpeed;
         public double damage;
-        public double currentHealth;
+        public double health;
         public double maxHealth;
         public double healthRegen;
 
@@ -25,7 +25,7 @@ namespace RA2Survivors
             Stats result = new Stats();
             result.attackSpeed = a.attackSpeed + b.attackSpeed;
             result.damage = a.damage + b.damage;
-            result.currentHealth = a.currentHealth + b.currentHealth;
+            result.health = a.health + b.health;
             result.maxHealth = a.maxHealth + b.maxHealth;
             result.healthRegen = a.healthRegen + b.healthRegen;
             result.movementSpeed = a.movementSpeed + b.movementSpeed;
@@ -42,7 +42,7 @@ namespace RA2Survivors
             Stats result = new Stats();
             result.attackSpeed = a.attackSpeed - b.attackSpeed;
             result.damage = a.damage - b.damage;
-            result.currentHealth = a.currentHealth - b.currentHealth;
+            result.health = a.health - b.health;
             result.maxHealth = a.maxHealth - b.maxHealth;
             result.healthRegen = a.healthRegen - b.healthRegen;
             result.movementSpeed = a.movementSpeed - b.movementSpeed;

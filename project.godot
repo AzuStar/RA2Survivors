@@ -45,7 +45,6 @@ MoveRight={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
-3d/default_linear_damp=1.2
 
 [rendering]
 

@@ -61,9 +61,10 @@ namespace RA2Survivors
                     // check that all references in _selectedTargets are still valid
                     for (int i = _selectedTargets.Count - 1; i >= 0; i--)
                     {
-                        if (!IsInstanceValid(_selectedTargets[i]))
+                        Enemy iterator = _selectedTargets[i];
+                        if (!IsInstanceValid(iterator) || iterator.dead)
                         {
-                            _selectedTargets.RemoveAt(i);
+                            _selectedTargets.Remove(iterator);
                         }
                     }
                     Shoot(_selectedTargets);

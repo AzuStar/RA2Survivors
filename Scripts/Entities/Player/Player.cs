@@ -5,7 +5,7 @@ namespace RA2Survivors
 {
     public partial class Player : Entity
     {
-        public static double ExpFormula(int level) => 10 + 10 * level;
+        public static double ExpFormula(int level) => 10 + 5 * level;
 
         public override EEntityType associatedEntity => EEntityType.Conscript;
 
@@ -35,23 +35,34 @@ namespace RA2Survivors
             SetExp(stats.currentExp + amount);
         }
 
+        public override void SetHealth(double amount)
+        {
+            base.SetHealth(amount);
+            HealthBar.SetHealth(stats.health, stats.maxHealth);
+        }
+
         public override void _Ready()
         {
             Sprite = (RA2Sprite3D)FindChild("Sprite3D");
 
+            ContactMonitor = true;
+            MaxContactsReported = 6;
+
             SetExp(stats.currentExp);
-
-            GiveExp();
-
-            // GD.Print(stats.level);
+            SetHealth(stats.health);
         }
 
-        public async void GiveExp()
+        public override void TakeDamage(double damage)
         {
-            await ToSignal(GetTree().CreateTimer(5), SceneTreeTimer.SignalName.Timeout);
-            AddExp(15);
-            GD.Print(stats.currentExp);
-            GD.Print(stats.level);
+            base.TakeDamage(damage);
+            HealthBar.SetHealth(stats.health, stats.maxHealth);
+        }
+
+        public override void _PhysicsProcess(double delta)
+        {
+            base._PhysicsProcess(delta);
+            if (_velocity.Length() > 0)
+                ApplySlidingForceToRigidBodies();
         }
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)
@@ -117,6 +128,31 @@ namespace RA2Survivors
             else if (_velocity.X > 0 && _velocity.Z < 0)
             {
                 Sprite.PlayAnim("run_ne");
+            }
+        }
+
+        private void ApplySlidingForceToRigidBodies()
+        {
+            float slideForce = 10.0f;
+
+            foreach (var collider in GetCollidingBodies())
+            {
+                if (collider is Enemy enemy)
+                {
+                    Vector3 toEnemy = enemy.GlobalTransform.Origin - GlobalTransform.Origin;
+                    Vector3 perpendicularDirection = new Vector3(
+                        -_velocity.Z,
+                        0,
+                        _velocity.X
+                    ).Normalized();
+
+                    float dotProduct = toEnemy.Dot(perpendicularDirection);
+                    if (dotProduct > 0)
+                    {
+                        perpendicularDirection = -perpendicularDirection;
+                    }
+                    enemy.Push(-perpendicularDirection * slideForce);
+                }
             }
         }
     }

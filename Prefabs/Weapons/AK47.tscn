@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4bga2c1bofgh"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/AK47.cs" id="1_88vx5"]
+
+[node name="AK47" type="Node"]
+script = ExtResource("1_88vx5")
