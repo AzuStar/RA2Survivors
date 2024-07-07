@@ -3,6 +3,7 @@ namespace RA2Survivors
 	public partial class Conscript : Player
 	{
 		public AK47 akWeapon;
+		public ForTheUnion ftuPassive;
 
 		public override void _Ready()
 		{
@@ -11,7 +12,7 @@ namespace RA2Survivors
 			{
 				attackSpeed = 1,
 				damage = 9,
-				maxHealth = 100,
+				maxHealth = 1000000,
 				healthRegen = 0.01,
 				movementSpeed = 10,
 				expGainRate = 1
@@ -19,6 +20,9 @@ namespace RA2Survivors
 			stats.health = stats.maxHealth;
 			akWeapon = new AK47();
 			AddChild(akWeapon);
+			ftuPassive = new ForTheUnion();
+			availableUpgrades.AddRange(ftuPassive.upgrades);
+			AddChild(ftuPassive);
 
 			Sprite.AnimDefinitions.Add(
 				"death",

@@ -1,15 +1,19 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace RA2Survivors
 {
     public partial class Player : Entity
     {
+        public int upgradesToSelect;
+
         public static double ExpFormula(int level) => 10 + 5 * level;
 
         public override EEntityType associatedEntity => EEntityType.Conscript;
 
-        private Vector3 _velocity = Vector3.Zero;
+        public List<UpgradeButtonSettings> availableUpgrades = new List<UpgradeButtonSettings>();
+        public Vector3 movementVelocity = Vector3.Zero;
         protected RA2Sprite3D Sprite;
 
         public void SetExp(double amount)
@@ -26,6 +30,7 @@ namespace RA2Survivors
             }
 
             ExpBar.SetExp(stats.currentExp, nextLevelExp);
+            LevelUp(levelUps);
 
             stats.level = levelUps;
         }
@@ -33,6 +38,11 @@ namespace RA2Survivors
         public void AddExp(double amount)
         {
             SetExp(stats.currentExp + amount);
+        }
+
+        public virtual void LevelUp(int times)
+        {
+            upgradesToSelect += times;
         }
 
         public override void SetHealth(double amount)
@@ -52,17 +62,22 @@ namespace RA2Survivors
             SetHealth(stats.health);
         }
 
-        public override void TakeDamage(double damage)
+        public override void TakeDamage(Entity source, double damage)
         {
-            base.TakeDamage(damage);
+            base.TakeDamage(source, damage);
             HealthBar.SetHealth(stats.health, stats.maxHealth);
         }
 
         public override void _PhysicsProcess(double delta)
         {
             base._PhysicsProcess(delta);
-            if (_velocity.Length() > 0)
+            if (movementVelocity.Length() > 0)
                 ApplySlidingForceToRigidBodies();
+            if (upgradesToSelect > 0)
+            {
+                UpgradeSelector.CreateSelection(availableUpgrades.ToArray());
+                upgradesToSelect--;
+            }
         }
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)
@@ -88,44 +103,44 @@ namespace RA2Survivors
             }
             direction = direction.Normalized();
             Vector3 horizontalVelocity = direction * (float)stats.movementSpeed;
-            _velocity.X = horizontalVelocity.X;
-            _velocity.Z = horizontalVelocity.Z;
+            movementVelocity.X = horizontalVelocity.X;
+            movementVelocity.Z = horizontalVelocity.Z;
 
-            state.LinearVelocity = _velocity;
+            state.LinearVelocity = movementVelocity;
 
-            if (_velocity.X == 0 && _velocity.Z == 0)
+            if (movementVelocity.X == 0 && movementVelocity.Z == 0)
             {
                 Sprite.PlayAnim("face_s");
             }
-            else if (_velocity.X == 0 && _velocity.Z < 0)
+            else if (movementVelocity.X == 0 && movementVelocity.Z < 0)
             {
                 Sprite.PlayAnim("run_n");
             }
-            else if (_velocity.X < 0 && _velocity.Z < 0)
+            else if (movementVelocity.X < 0 && movementVelocity.Z < 0)
             {
                 Sprite.PlayAnim("run_nw");
             }
-            else if (_velocity.X < 0 && _velocity.Z == 0)
+            else if (movementVelocity.X < 0 && movementVelocity.Z == 0)
             {
                 Sprite.PlayAnim("run_w");
             }
-            else if (_velocity.X < 0 && _velocity.Z > 0)
+            else if (movementVelocity.X < 0 && movementVelocity.Z > 0)
             {
                 Sprite.PlayAnim("run_sw");
             }
-            else if (_velocity.X == 0 && _velocity.Z > 0)
+            else if (movementVelocity.X == 0 && movementVelocity.Z > 0)
             {
                 Sprite.PlayAnim("run_s");
             }
-            else if (_velocity.X > 0 && _velocity.Z > 0)
+            else if (movementVelocity.X > 0 && movementVelocity.Z > 0)
             {
                 Sprite.PlayAnim("run_se");
             }
-            else if (_velocity.X > 0 && _velocity.Z == 0)
+            else if (movementVelocity.X > 0 && movementVelocity.Z == 0)
             {
                 Sprite.PlayAnim("run_e");
             }
-            else if (_velocity.X > 0 && _velocity.Z < 0)
+            else if (movementVelocity.X > 0 && movementVelocity.Z < 0)
             {
                 Sprite.PlayAnim("run_ne");
             }
@@ -141,9 +156,9 @@ namespace RA2Survivors
                 {
                     Vector3 toEnemy = enemy.GlobalTransform.Origin - GlobalTransform.Origin;
                     Vector3 perpendicularDirection = new Vector3(
-                        -_velocity.Z,
+                        -movementVelocity.Z,
                         0,
-                        _velocity.X
+                        movementVelocity.X
                     ).Normalized();
 
                     float dotProduct = toEnemy.Dot(perpendicularDirection);

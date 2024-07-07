@@ -1,23 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bakls0qxpv1lo"]
+[gd_scene load_steps=8 format=3 uid="uid://bakls0qxpv1lo"]
 
 [ext_resource type="Script" path="res://Scripts/GamemodeLevel1.cs" id="1_6tjb4"]
+[ext_resource type="Script" path="res://Scripts/PauseService.cs" id="1_rw6an"]
 [ext_resource type="Script" path="res://Scripts/ExpBar.cs" id="2_qoepl"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="3_a3ylo"]
 [ext_resource type="Theme" uid="uid://dtj7boqn5vo7r" path="res://HealthTheme.tres" id="3_bccbv"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeSelector.cs" id="4_aq6wt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f3aqj"]
 size = Vector3(100, 0.01, 100)
 
 [node name="Root" type="Node3D"]
 
+[node name="PauseSerivice" type="Node" parent="."]
+script = ExtResource("1_rw6an")
+
 [node name="ExpBar" type="ProgressBar" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
+offset_left = 72.0
 offset_top = -37.0
-offset_right = -100.0
+offset_right = -72.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -29,16 +34,30 @@ script = ExtResource("2_qoepl")
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = -0.0123457
-offset_left = 906.0
-offset_top = 15.0
-offset_right = -61.0
-offset_bottom = 42.0
+offset_left = 896.0
+offset_top = 24.0
+offset_right = -71.0
+offset_bottom = 51.0
 grow_horizontal = 2
 theme = ExtResource("3_bccbv")
 value = 50.77
 show_percentage = false
 script = ExtResource("3_a3ylo")
 metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 3
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 128.0
+offset_right = -192.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("4_aq6wt")
 
 [node name="Gamemode" type="Node" parent="."]
 script = ExtResource("1_6tjb4")

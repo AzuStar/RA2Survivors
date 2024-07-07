@@ -49,10 +49,10 @@ namespace RA2Survivors
 
         public virtual void DealDamage(Entity target, double damage)
         {
-            target.TakeDamage(damage);
+            target.TakeDamage(this, damage);
         }
 
-        public virtual void TakeDamage(double damage)
+        public virtual void TakeDamage(Entity source, double damage)
         {
             stats.health -= damage;
             if (stats.health <= 0)

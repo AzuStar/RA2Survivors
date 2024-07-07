@@ -107,6 +107,7 @@ namespace RA2Survivors
         {
             GamemodeLevel1.instance.enemies.Remove(this);
             GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
+            GamemodeLevel1.instance.player.AddExp(stats.expDropped);
         }
     }
 }
