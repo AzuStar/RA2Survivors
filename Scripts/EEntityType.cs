@@ -6,6 +6,11 @@ namespace RA2Survivors
     {
         Conscript,
         GI,
+        GGI,
+        Sniper,
+        Seal,
+        Spy,
+        Engineer,
         AttackDog,
         Tanya,
     }

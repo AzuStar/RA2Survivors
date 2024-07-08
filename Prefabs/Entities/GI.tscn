@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c1leru77li5yf"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/GI.cs" id="1_mt6vv"]
-[ext_resource type="Texture2D" uid="uid://by68bsbiyw01i" path="res://Assets/Units/gi/gi_blue.png" id="2_remji"]
+[ext_resource type="Texture2D" uid="uid://by68bsbiyw01i" path="res://Assets/Units/gi_blue.png" id="2_remji"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="2_ysge2"]
 [ext_resource type="AudioStream" uid="uid://cojybgftbdg38" path="res://Assets/Audio/igidia.wav" id="4_dyybl"]
 [ext_resource type="AudioStream" uid="uid://d1i4i5k4cfnda" path="res://Assets/Audio/igidib.wav" id="5_tktcs"]

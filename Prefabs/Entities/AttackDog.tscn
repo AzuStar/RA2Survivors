@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ofqgwgjgb6rm"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/AttackDog.cs" id="1_1o25a"]
-[ext_resource type="Texture2D" uid="uid://crhe6ka7h5c1g" path="res://Assets/Units/adog/adog_blue.png" id="2_b2f8p"]
+[ext_resource type="Texture2D" uid="uid://crhe6ka7h5c1g" path="res://Assets/Units/adog_blue.png" id="2_b2f8p"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="3_ihdk2"]
 [ext_resource type="AudioStream" uid="uid://dtfnu5fwac7o1" path="res://Assets/Audio/idogdiea.wav" id="4_dnmxh"]
 

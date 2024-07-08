@@ -22,7 +22,13 @@ namespace RA2Survivors
 		{
 			["Conscript"] = RESOURCE_MASTER_PATH + "Entities/Conscript.tscn",
 			["GI"] = RESOURCE_MASTER_PATH + "Entities/GI.tscn",
-			["AttackDog"] = RESOURCE_MASTER_PATH + "Entities/AttackDog.tscn"
+			["GGI"] = RESOURCE_MASTER_PATH + "Entities/GGI.tscn",
+			["Sniper"] = RESOURCE_MASTER_PATH + "Entities/Sniper.tscn",
+			["Seal"] = RESOURCE_MASTER_PATH + "Entities/Seal.tscn",
+			["Spy"] = RESOURCE_MASTER_PATH + "Entities/Spy.tscn",
+			["Engineer"] = RESOURCE_MASTER_PATH + "Entities/Engineer.tscn",
+			["AttackDog"] = RESOURCE_MASTER_PATH + "Entities/AttackDog.tscn",
+			["Tanya"] = RESOURCE_MASTER_PATH + "Entities/Tanya.tscn"
 		};
 		private static readonly Dictionary<EEntityType, string> ENTITY_NAMES = new Dictionary<
 			EEntityType,
@@ -31,7 +37,13 @@ namespace RA2Survivors
 		{
 			[EEntityType.Conscript] = "Conscript",
 			[EEntityType.GI] = "GI",
-			[EEntityType.AttackDog] = "AttackDog"
+			[EEntityType.GGI] = "GGI",
+			[EEntityType.Sniper] = "Sniper",
+			[EEntityType.Seal] = "Seal",
+			[EEntityType.Spy] = "Spy",
+			[EEntityType.Engineer] = "Engineer",
+			[EEntityType.AttackDog] = "AttackDog",
+			[EEntityType.Tanya] = "Tanya"
 		};
 
 		public static T CreateEntity<T>(string entityName)

@@ -6,7 +6,6 @@ namespace RA2Survivors
 {
 	public partial class AK47 : Weapon
 	{
-		public AudioStreamPlayer3D FireSound;
 		public override void _Ready()
 		{
 			base._Ready();
@@ -15,7 +14,10 @@ namespace RA2Survivors
 			burstDelay = 0.05;
 			reloadSpeed = 0.95;
 			multishot = 1;
-			FireSound = (AudioStreamPlayer3D)owner.FindChild("iconatta");
+			FireSounds.Add((AudioStreamPlayer3D)owner.FindChild("iconatta"));
+			FireSounds.Add((AudioStreamPlayer3D)owner.FindChild("iconattb"));
+			FireSounds.Add((AudioStreamPlayer3D)owner.FindChild("iconattc"));
+			FireSounds.Add((AudioStreamPlayer3D)owner.FindChild("iconattd"));
 		}
 
 		public override void _Process(double delta)
@@ -25,7 +27,6 @@ namespace RA2Survivors
 
 		public override void Shoot(List<Enemy> targets)
 		{
-			FireSound.Play();
 			foreach (var t in targets)
 			{
 				owner.DealDamage(t, owner.stats.damage * damageMultiplier);
