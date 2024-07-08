@@ -15,15 +15,16 @@ namespace RA2Survivors
             base._PhysicsProcess(delta);
             if (magnetTarget != null)
             {
-                double distance = GlobalPosition.DistanceTo(magnetTarget.GlobalPosition);
-                if (distance < 1)
+                Vector3 magnetOffsetPosition = magnetTarget.GlobalPosition + new Vector3(0, 0, -2);
+                double distance = GlobalPosition.DistanceTo(magnetOffsetPosition);
+                if (distance < 2)
                 {
                     magnetTarget.AddExp(expAmount);
                     QueueFree();
                 }
                 else
                 {
-                    Vector3 direction = (magnetTarget.GlobalPosition - GlobalPosition).Normalized();
+                    Vector3 direction = (magnetOffsetPosition - GlobalPosition).Normalized();
 
                     GlobalPosition += direction * (float)(movementSpeed * delta);
                     movementSpeed += movementSpeedGrow * delta;

@@ -46,6 +46,25 @@ namespace RA2Survivors
                     },
                 ],
                 waveDuration = 30
+            },
+            new WaveConfig
+            {
+                enemyConfig =
+                [
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.GI,
+                        minEnemies = 10,
+                        chancePastMin = 0.2f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
+                        chancePastMin = 0.1f
+                    },
+                ],
+                waveDuration = 30
             }
         };
         public Queue<WaveConfig> waveQueue;
@@ -150,9 +169,16 @@ namespace RA2Survivors
             expOrbNode.AddChild(expOrb);
         }
 
-        public static List<Enemy> GetClosestEnemiesToPlayer(int amount)
+        public static List<Enemy> GetClosestEnemiesToPlayer(
+            int amount,
+            double minRange = double.MaxValue
+        )
         {
-            return instance.enemies.OrderBy(e => e.distanceToPlayer).Take(amount).ToList();
+            return instance
+                .enemies.OrderBy(e => e.distanceToPlayer)
+                .Where(e => e.distanceToPlayer < minRange)
+                .Take(amount)
+                .ToList();
         }
     }
 }

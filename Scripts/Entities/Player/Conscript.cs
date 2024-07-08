@@ -11,12 +11,13 @@ namespace RA2Survivors
             stats = new Stats
             {
                 attackSpeed = 1,
+                attackRange = 27,
                 damage = 9,
                 maxHealth = 100,
                 healthRegen = 0.01,
                 movementSpeed = 10,
                 expGainRate = 1,
-                magnetRange = 5.5,
+                magnetRange = 7.5,
             };
             stats.health = stats.maxHealth;
             akWeapon = new AK47();
