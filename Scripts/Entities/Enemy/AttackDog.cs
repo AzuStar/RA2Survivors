@@ -11,7 +11,7 @@ namespace RA2Survivors
 			base._Ready();
 			stats = new Stats
 			{
-				damage = 10,
+				damage = 50,
 				maxHealth = 5,
 				movementSpeed = 10,
 				expDropped = 1,

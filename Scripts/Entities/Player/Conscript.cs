@@ -12,7 +12,7 @@ namespace RA2Survivors
 			{
 				attackSpeed = 1,
 				damage = 9,
-				maxHealth = 1000000,
+				maxHealth = 100,
 				healthRegen = 0.01,
 				movementSpeed = 10,
 				expGainRate = 1
