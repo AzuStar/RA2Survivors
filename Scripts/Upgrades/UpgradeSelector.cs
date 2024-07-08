@@ -5,6 +5,7 @@ namespace RA2Survivors
 {
     public partial class UpgradeSelector : Node
     {
+        public const string RESOURCE_PATH = "Upgrades/StandardUpgradeChoice.tscn";
         public static UpgradeSelector instance { get; private set; }
 
         private List<UpgradeButton> buttons = new List<UpgradeButton>();
@@ -20,8 +21,9 @@ namespace RA2Survivors
             foreach (var button in createdButtons)
             {
                 UpgradeButton uButton = ResourceProvider.CreateResource<UpgradeButton>(
-                    button.resourcePath
+                    RESOURCE_PATH
                 );
+                uButton.SetText(button.name, button.description);
                 uButton.Pressed += _CallBackLogic + button.callback;
                 instance.buttons.Add(uButton);
                 instance.AddChild(uButton);

@@ -22,37 +22,34 @@ namespace RA2Survivors
         {
             upgrades =
             [
-                new UpgradeButtonSettings
-                {
-                    resourcePath = "Upgrades/UpgradeAttackSpeed.tscn",
-                    callback = () =>
-                    {
-                        UnApply();
-                        attackSpeedBoost += 0.01;
-                        Apply();
-                    }
-                },
-                new UpgradeButtonSettings
-                {
-                    resourcePath = "Upgrades/UpgradeDamage.tscn",
-                    callback = () =>
-                    {
-                        UnApply();
-                        damageBoost += 1;
-                        attackSpeedBoost -= 0.02;
-                        Apply();
-                    }
-                },
-                new UpgradeButtonSettings
-                {
-                    resourcePath = "Upgrades/UpgradeStackLimit.tscn",
-                    callback = () =>
-                    {
-                        UnApply();
-                        stackLimit += 1;
-                        Apply();
-                    }
-                },
+                // new UpgradeButtonSettings
+                // {
+                //     callback = () =>
+                //     {
+                //         UnApply();
+                //         attackSpeedBoost += 0.01;
+                //         Apply();
+                //     }
+                // },
+                // new UpgradeButtonSettings
+                // {
+                //     callback = () =>
+                //     {
+                //         UnApply();
+                //         damageBoost += 1;
+                //         attackSpeedBoost -= 0.02;
+                //         Apply();
+                //     }
+                // },
+                // new UpgradeButtonSettings
+                // {
+                //     callback = () =>
+                //     {
+                //         UnApply();
+                //         stackLimit += 1;
+                //         Apply();
+                //     }
+                // },
             ];
         }
 

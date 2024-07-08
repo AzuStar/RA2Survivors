@@ -4,7 +4,8 @@ namespace RA2Survivors
 {
     public class UpgradeButtonSettings
     {
-        public string resourcePath;
+        public string name;
+        public string description;
         public Action callback;
     }
 }

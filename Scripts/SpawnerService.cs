@@ -7,10 +7,10 @@ namespace RA2Survivors
     {
         public static double DistanceDespawnThreshold = 9999999;
 
-        public static double spawnRangeXStart = 20;
-        public static double spawnRangeXLength = 5;
-        public static double spawnRangeZStart = 12;
-        public static double spawnRangeZLength = 4;
+        public static double spawnRangeXStart = 52;
+        public static double spawnRangeXLength = 12;
+        public static double spawnRangeZStart = 32;
+        public static double spawnRangeZLength = 10;
 
         static SpawnerService()
         {
