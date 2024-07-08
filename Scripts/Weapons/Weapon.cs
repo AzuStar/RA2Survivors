@@ -28,6 +28,8 @@ namespace RA2Survivors
 
 		protected EWeaponState currentState = EWeaponState.Shooting;
 
+		public List<AudioStreamPlayer3D> FireSounds = new List<AudioStreamPlayer3D>();
+
 		public override void _Ready()
 		{
 			owner = GetParent<Player>();
@@ -91,6 +93,10 @@ namespace RA2Survivors
 				_reloadTimeout = reloadSpeed / owner.stats.attackSpeed;
 				_burstsLeft = burstCount;
 				currentState = EWeaponState.Shooting;
+				if (FireSounds.Count > 0)
+				{
+					FireSounds[GD.RandRange(0,FireSounds.Count - 1)].Play();
+				}
 			}
 		}
 

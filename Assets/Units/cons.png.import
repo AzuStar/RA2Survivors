@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by68bsbiyw01i"
-path.s3tc="res://.godot/imported/gi_blue.png-b4df0e41b46d6593b83ec4f0e47bedb5.s3tc.ctex"
+uid="uid://c8q57hodnui4p"
+path.s3tc="res://.godot/imported/cons.png-2a1eeff2af036302af122cb91afaa791.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Units/gi/gi_blue.png"
-dest_files=["res://.godot/imported/gi_blue.png-b4df0e41b46d6593b83ec4f0e47bedb5.s3tc.ctex"]
+source_file="res://Assets/Units/cons.png"
+dest_files=["res://.godot/imported/cons.png-2a1eeff2af036302af122cb91afaa791.s3tc.ctex"]
 
 [params]
 

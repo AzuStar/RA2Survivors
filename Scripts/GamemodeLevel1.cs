@@ -22,6 +22,42 @@ namespace RA2Survivors
                     },
                     new WaveEnemyConfig
                     {
+                        enemyType = EEntityType.GGI,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Sniper,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Seal,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Spy,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Engineer,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Tanya,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
                         enemyType = EEntityType.AttackDog,
                         minEnemies = 2,
                         chancePastMin = 0.2f
