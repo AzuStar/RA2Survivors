@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmia7bget8g88"]
+[gd_scene load_steps=8 format=3 uid="uid://cysink7b18q7d"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/Tanya.cs" id="1_ihbfv"]
 [ext_resource type="Texture2D" uid="uid://brsloj4y2k4jb" path="res://Assets/Units/tany_blue.png" id="2_jpnfv"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bjs45sb3xle4d" path="res://Assets/Audio/itandic.wav" id="6_8bcf2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ishly"]
-radius = 0.6
+radius = 1.0
 
 [node name="RigidBody3D" type="RigidBody3D"]
 mass = 2.0

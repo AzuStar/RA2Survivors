@@ -12,6 +12,7 @@ namespace RA2Survivors
 
 			stats = new Stats
 			{
+				attackRange = 1.9,
 				damage = 10,
 				maxHealth = 5,
 				movementSpeed = 2,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bakls0qxpv1lo"]
+[gd_scene load_steps=8 format=3 uid="uid://bakls0qxpv1lo"]
 
 [ext_resource type="Script" path="res://Scripts/GamemodeLevel1.cs" id="1_6tjb4"]
 [ext_resource type="Script" path="res://Scripts/PauseService.cs" id="1_rw6an"]
@@ -7,9 +7,6 @@
 [ext_resource type="Theme" uid="uid://dtj7boqn5vo7r" path="res://HealthTheme.tres" id="3_bccbv"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeSelector.cs" id="4_aq6wt"]
 [ext_resource type="PackedScene" uid="uid://duogcxa51rmup" path="res://Assets/Levels/4_genies_wish.tscn" id="7_ck3a1"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f3aqj"]
-size = Vector3(100, 0.01, 100)
 
 [node name="Root" type="Node3D"]
 
@@ -64,15 +61,5 @@ script = ExtResource("4_aq6wt")
 
 [node name="Gamemode" type="Node" parent="."]
 script = ExtResource("1_6tjb4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
-shape = SubResource("BoxShape3D_f3aqj")
-
-[node name="Label3D" type="Label3D" parent="."]
-visible = false
-text = "-20"
 
 [node name="4_genies_wish" parent="." instance=ExtResource("7_ck3a1")]

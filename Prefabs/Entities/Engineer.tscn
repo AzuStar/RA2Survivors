@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1ywy27mvukq8"]
+[gd_scene load_steps=9 format=3 uid="uid://k7vhdjy1wc3r"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/Engineer.cs" id="1_7edrc"]
 [ext_resource type="Texture2D" uid="uid://c2bjm5a8c6hkd" path="res://Assets/Units/engineer_blue.png" id="2_ykwxr"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bv1nag50l2rwq" path="res://Assets/Audio/ienadid.wav" id="7_j3bgj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ishly"]
-radius = 0.6
+radius = 0.7
 
 [node name="RigidBody3D" type="RigidBody3D"]
 mass = 2.0
