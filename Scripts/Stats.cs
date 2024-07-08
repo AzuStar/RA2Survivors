@@ -4,6 +4,7 @@ namespace RA2Survivors
 {
     public struct Stats
     {
+        public double attackRange;
         public double attackSpeed;
         public double damage;
         public double health;
@@ -17,12 +18,14 @@ namespace RA2Survivors
         public int level;
 
         public double expGainRate;
+        public double magnetRange;
 
         // + operator
 
         public static Stats operator +(Stats a, Stats b)
         {
             Stats result = new Stats();
+            result.attackRange = a.attackRange + b.attackRange;
             result.attackSpeed = a.attackSpeed + b.attackSpeed;
             result.damage = a.damage + b.damage;
             result.health = a.health + b.health;
@@ -40,6 +43,7 @@ namespace RA2Survivors
         public static Stats operator -(Stats a, Stats b)
         {
             Stats result = new Stats();
+            result.attackRange = a.attackRange - b.attackRange;
             result.attackSpeed = a.attackSpeed - b.attackSpeed;
             result.damage = a.damage - b.damage;
             result.health = a.health - b.health;

@@ -142,7 +142,7 @@ namespace RA2Survivors
             if (dead)
                 return;
 
-            if (distanceToPlayer <= 1.9)
+            if (distanceToPlayer <= stats.attackRange)
             {
                 DealDamage(GamemodeLevel1.instance.player, stats.damage * delta);
             }
@@ -193,7 +193,7 @@ namespace RA2Survivors
 
         public override void OnDying()
         {
-            GamemodeLevel1.instance.player.AddExp(stats.expDropped);
+            GamemodeLevel1.instance.SpawnExpOrb(GlobalPosition, stats.expDropped);
             if (DyingSounds.Count > 0)
             {
                 DyingSounds[GD.RandRange(0, DyingSounds.Count - 1)].Play();

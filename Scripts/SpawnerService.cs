@@ -32,6 +32,7 @@ namespace RA2Survivors
         public static Vector3 SpawnRangeOffset(Vector3 center)
         {
             Vector3 offset = center;
+            offset.Y = 1;
             if (GD.RandRange(0, 1) == 0)
             {
                 // LEFT/RIGHT

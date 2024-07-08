@@ -131,6 +131,20 @@ namespace RA2Survivors
             base._PhysicsProcess(delta);
             if (movementVelocity.Length() > 0)
                 ApplySlidingForceToRigidBodies();
+
+            foreach (ExpOrb orb in GamemodeLevel1.instance.expOrbs)
+            {
+                double distance = GlobalPosition.DistanceTo(orb.GlobalPosition);
+                if (distance < 1)
+                {
+                    AddExp(orb.expAmount);
+                    orb.QueueFree();
+                }
+                else if (distance < stats.magnetRange)
+                {
+                    orb.GlobalPosition = orb.GlobalPosition.Lerp(GlobalPosition, 0.1f);
+                }
+            }
         }
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)

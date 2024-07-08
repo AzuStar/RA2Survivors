@@ -2,29 +2,20 @@ using Godot;
 
 namespace RA2Survivors
 {
-    public partial class ExpOrb : RigidBody3D
+    public partial class ExpOrb : Node3D
     {
         public double expAmount;
 
         public override void _Ready()
         {
-            SetPhysicsProcess(true);
+            base._Ready();
+            GamemodeLevel1.instance.expOrbs.Add(this);
         }
 
-        // public override void _PhysicsProcess(float delta)
-        // {
-        //     if (IsInstanceValid(this))
-        //     {
-        //         if (
-        //             GlobalTransform.Origin.DistanceTo(
-        //                 GamemodeLevel1.instance.player.GlobalTransform.Origin
-        //             ) < 1
-        //         )
-        //         {
-        //             GamemodeLevel1.instance.player.stats.currentExp += expAmount;
-        //             QueueFree();
-        //         }
-        //     }
-        // }
+        protected override void Dispose(bool disposing)
+        {
+            GamemodeLevel1.instance.expOrbs.Remove(this);
+            base.Dispose(disposing);
+        }
     }
 }

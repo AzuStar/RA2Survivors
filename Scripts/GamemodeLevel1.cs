@@ -17,53 +17,11 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 25,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.GGI,
                         minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Sniper,
-                        minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Seal,
-                        minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Spy,
-                        minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Engineer,
-                        minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Tanya,
-                        minEnemies = 5,
-                        chancePastMin = 0.1f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.AttackDog,
-                        minEnemies = 2,
                         chancePastMin = 0.2f
-                    }
+                    },
                 ],
-                waveDuration = 301
+                waveDuration = 30
             },
             new WaveConfig
             {
@@ -73,8 +31,14 @@ namespace RA2Survivors
                     {
                         enemyType = EEntityType.GI,
                         minEnemies = 10,
+                        chancePastMin = 0.2f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
                         chancePastMin = 0.1f
-                    }
+                    },
                 ],
                 waveDuration = 30
             }
@@ -84,6 +48,8 @@ namespace RA2Survivors
         public Player player;
         public int[] enemyCount;
         public List<Enemy> enemies = new List<Enemy>();
+
+        public List<ExpOrb> expOrbs = new List<ExpOrb>();
         public int maxEnemiesCount = 100;
 
         public double spawnTimeout = 0;
@@ -117,6 +83,7 @@ namespace RA2Survivors
             instance = this;
             enemyCount = new int[Enum.GetValues(typeof(EEntityType)).Length];
             player = ResourceProvider.LoadEntity<Player>(ResourceProvider.SelectedCharacter);
+            player.GlobalTransform = new Transform3D(Basis.Identity, new Vector3(-2, 2, 0));
             AddChild(player);
             waveQueue = new Queue<WaveConfig>(waveConfigs);
             NextWave();
@@ -167,6 +134,13 @@ namespace RA2Survivors
             Enemy enemy = SpawnerService.SpawnEnemy(type, player.GlobalTransform.Origin);
             AddChild(enemy);
             enemies.Add(enemy);
+        }
+
+        public void SpawnExpOrb(Vector3 position, double expAmount)
+        {
+            ExpOrb expOrb = ResourceProvider.CreateExpOrb(position, expAmount);
+            AddChild(expOrb);
+            expOrbs.Add(expOrb);
         }
 
         public static List<Enemy> GetClosestEnemiesToPlayer(int amount)
