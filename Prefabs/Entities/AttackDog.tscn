@@ -26,5 +26,7 @@ hframes = 12
 vframes = 8
 script = ExtResource("3_ihdk2")
 
-[node name="idogdiea" type="AudioStreamPlayer3D" parent="."]
+[node name="dyingsounds" type="Node" parent="."]
+
+[node name="idogdiea" type="AudioStreamPlayer3D" parent="dyingsounds"]
 stream = ExtResource("4_dnmxh")

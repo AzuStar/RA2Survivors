@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://btlnii426mi2n"]
+[gd_scene load_steps=10 format=3 uid="uid://btlnii426mi2n"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/GGI.cs" id="1_wwquk"]
 [ext_resource type="Texture2D" uid="uid://chc2w8w0wbobc" path="res://Assets/Units/ggi_blue.png" id="2_85wbt"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="3_d74f1"]
+[ext_resource type="AudioStream" uid="uid://rkas2vn42fp2" path="res://Assets/Audio/iggidia.wav" id="4_ml80m"]
+[ext_resource type="AudioStream" uid="uid://ddyh08uf403pl" path="res://Assets/Audio/iggidib.wav" id="5_yu53l"]
+[ext_resource type="AudioStream" uid="uid://egoj2xnyow2n" path="res://Assets/Audio/iggidic.wav" id="6_kusoy"]
+[ext_resource type="AudioStream" uid="uid://b8m3h7aei0olx" path="res://Assets/Audio/iggidid.wav" id="7_eqx1v"]
+[ext_resource type="AudioStream" uid="uid://d2d3wiyhbjtvh" path="res://Assets/Audio/iggidie.wav" id="8_qe25e"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ishly"]
 radius = 0.6
@@ -24,3 +29,20 @@ texture = ExtResource("2_85wbt")
 hframes = 12
 vframes = 8
 script = ExtResource("3_d74f1")
+
+[node name="dyingsounds" type="Node" parent="."]
+
+[node name="iggidia" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("4_ml80m")
+
+[node name="iggidib" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("5_yu53l")
+
+[node name="iggidic" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("6_kusoy")
+
+[node name="iggidid" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("7_eqx1v")
+
+[node name="iggidie" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("8_qe25e")

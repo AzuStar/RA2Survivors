@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://la8nxp2k5ove"]
+[gd_scene load_steps=8 format=3 uid="uid://la8nxp2k5ove"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/Seal.cs" id="1_iwu3w"]
 [ext_resource type="Texture2D" uid="uid://isl7lekeu2mg" path="res://Assets/Units/seal_blue.png" id="2_n7dw1"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="3_mucmj"]
+[ext_resource type="AudioStream" uid="uid://d3t6rapfhm8vu" path="res://Assets/Audio/iseadia.wav" id="4_7t01s"]
+[ext_resource type="AudioStream" uid="uid://b5cht2s17rd4c" path="res://Assets/Audio/iseadib.wav" id="5_je2km"]
+[ext_resource type="AudioStream" uid="uid://dwe46uvwdjta3" path="res://Assets/Audio/iseadic.wav" id="6_w3jvn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ishly"]
 radius = 0.6
@@ -24,3 +27,14 @@ texture = ExtResource("2_n7dw1")
 hframes = 12
 vframes = 8
 script = ExtResource("3_mucmj")
+
+[node name="dyingsounds" type="Node" parent="."]
+
+[node name="iseadia" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("4_7t01s")
+
+[node name="iseadib" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("5_je2km")
+
+[node name="iseadic" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("6_w3jvn")
