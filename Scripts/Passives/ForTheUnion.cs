@@ -27,7 +27,7 @@ namespace RA2Survivors
                     resourcePath = "Upgrades/UpgradeAttackSpeed.tscn",
                     callback = () =>
                     {
-                        attackSpeedBoost += 0.05;
+                        attackSpeedBoost += 0.01;
                     }
                 },
                 new UpgradeButtonSettings
@@ -36,7 +36,7 @@ namespace RA2Survivors
                     callback = () =>
                     {
                         damageBoost += 1;
-                        attackSpeedBoost -= 0.05;
+                        attackSpeedBoost -= 0.02;
                     }
                 },
                 new UpgradeButtonSettings
