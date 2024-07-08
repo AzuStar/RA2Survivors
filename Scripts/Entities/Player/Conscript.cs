@@ -106,6 +106,78 @@ namespace RA2Survivors
 				}
 			);
 			Sprite.AnimDefinitions.Add(
+				"fire_n",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 23,
+					EndFrame = 23 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_nw",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 29,
+					EndFrame = 29 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_w",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 35,
+					EndFrame = 35 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_sw",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 41,
+					EndFrame = 41 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_s",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 47,
+					EndFrame = 47 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_se",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 53,
+					EndFrame = 53 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_e",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 59,
+					EndFrame = 59 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
+				"fire_ne",
+				new RA2SpriteAnim()
+				{
+					StartFrame = 65,
+					EndFrame = 65 + 5,
+					Loop = false
+				}
+			);
+			Sprite.AnimDefinitions.Add(
 				"run_n",
 				new RA2SpriteAnim()
 				{

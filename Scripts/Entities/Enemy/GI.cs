@@ -117,6 +117,12 @@ namespace RA2Survivors
 					Loop = true
 				}
 			);
+
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidia"));
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidib"));
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidic"));
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidid"));
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidie"));
 		}
 
 		public override void _PhysicsProcess(double delta)
