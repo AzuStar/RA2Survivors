@@ -10,5 +10,9 @@ namespace RA2Survivors
         {
             owner = GetParent<Player>();
         }
+
+        public abstract void Apply();
+
+        public abstract void UnApply();
     }
 }

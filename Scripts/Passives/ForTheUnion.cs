@@ -27,7 +27,9 @@ namespace RA2Survivors
                     resourcePath = "Upgrades/UpgradeAttackSpeed.tscn",
                     callback = () =>
                     {
+                        UnApply();
                         attackSpeedBoost += 0.01;
+                        Apply();
                     }
                 },
                 new UpgradeButtonSettings
@@ -35,8 +37,10 @@ namespace RA2Survivors
                     resourcePath = "Upgrades/UpgradeDamage.tscn",
                     callback = () =>
                     {
+                        UnApply();
                         damageBoost += 1;
                         attackSpeedBoost -= 0.02;
+                        Apply();
                     }
                 },
                 new UpgradeButtonSettings
@@ -44,7 +48,9 @@ namespace RA2Survivors
                     resourcePath = "Upgrades/UpgradeStackLimit.tscn",
                     callback = () =>
                     {
+                        UnApply();
                         stackLimit += 1;
+                        Apply();
                     }
                 },
             ];
@@ -108,10 +114,20 @@ namespace RA2Survivors
 
         public void UpdateStack(int newStack)
         {
-            owner.stats.attackSpeed -= attackSpeedBoost * _stackCount;
-            owner.stats.damage -= damageBoost * _stackCount;
+            UnApply();
             _stackCount = newStack;
+            Apply();
+        }
+
+        public override void Apply()
+        {
             owner.stats.attackSpeed += attackSpeedBoost * _stackCount;
+            owner.stats.damage -= damageBoost * _stackCount;
+        }
+
+        public override void UnApply()
+        {
+            owner.stats.attackSpeed -= attackSpeedBoost * _stackCount;
             owner.stats.damage += damageBoost * _stackCount;
         }
 
