@@ -5,17 +5,30 @@ namespace RA2Survivors
     public partial class ExpOrb : Node3D
     {
         public double expAmount;
+        public Player magnetTarget;
 
-        public override void _Ready()
-        {
-            base._Ready();
-            GamemodeLevel1.instance.expOrbs.Add(this);
-        }
+        public double movementSpeedGrow = 12;
+        private double movementSpeed = 3;
 
-        protected override void Dispose(bool disposing)
+        public override void _PhysicsProcess(double delta)
         {
-            GamemodeLevel1.instance.expOrbs.Remove(this);
-            base.Dispose(disposing);
+            base._PhysicsProcess(delta);
+            if (magnetTarget != null)
+            {
+                double distance = GlobalPosition.DistanceTo(magnetTarget.GlobalPosition);
+                if (distance < 1)
+                {
+                    magnetTarget.AddExp(expAmount);
+                    QueueFree();
+                }
+                else
+                {
+                    Vector3 direction = (magnetTarget.GlobalPosition - GlobalPosition).Normalized();
+
+                    GlobalPosition += direction * (float)(movementSpeed * delta);
+                    movementSpeed += movementSpeedGrow * delta;
+                }
+            }
         }
     }
 }

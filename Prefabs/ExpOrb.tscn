@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://5do4ds064yvc"]
+[gd_scene load_steps=3 format=3 uid="uid://5do4ds064yvc"]
+
+[ext_resource type="Texture2D" uid="uid://clg1qfyeemw0" path="res://Assets/Pickups/crate.png" id="1_fk80a"]
+[ext_resource type="Script" path="res://Scripts/ExpOrb.cs" id="1_q45xw"]
 
 [node name="ExpOrb" type="Node3D"]
+script = ExtResource("1_q45xw")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.871558, 9.96195, 0, -9.96195, 0.871558, 0, 0, 0)
+texture = ExtResource("1_fk80a")

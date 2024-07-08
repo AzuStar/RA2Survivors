@@ -206,7 +206,6 @@ namespace RA2Survivors
 
         protected override void Dispose(bool disposing)
         {
-            GamemodeLevel1.instance.enemies.Remove(this);
             GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
             base.Dispose(disposing);
         }

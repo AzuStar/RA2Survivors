@@ -7,6 +7,11 @@ namespace RA2Survivors
 {
     public partial class GamemodeLevel1 : Node
     {
+        [Export]
+        public Node enemyNode;
+
+        [Export]
+        public Node expOrbNode;
         public static GamemodeLevel1 instance { get; private set; }
         public WaveConfig[] waveConfigs =
         {
@@ -47,9 +52,10 @@ namespace RA2Survivors
         public WaveConfig currentWave;
         public Player player;
         public int[] enemyCount;
-        public List<Enemy> enemies = new List<Enemy>();
 
-        public List<ExpOrb> expOrbs = new List<ExpOrb>();
+        public int totalEnemyCount => enemyNode.GetChildCount();
+        public Enemy[] enemies => enemyNode.GetChildren().Cast<Enemy>().ToArray();
+        public ExpOrb[] expOrbs => expOrbNode.GetChildren().Cast<ExpOrb>().ToArray();
         public int maxEnemiesCount = 100;
 
         public double spawnTimeout = 0;
@@ -122,7 +128,10 @@ namespace RA2Survivors
                     for (int i = 0; i < enemiesToPopulate; i++)
                         SpawnEnemy(enemyConfig.enemyType);
                 }
-                else if (enemies.Count < maxEnemiesCount && GD.Randf() < enemyConfig.chancePastMin)
+                else if (
+                    totalEnemyCount < maxEnemiesCount
+                    && GD.Randf() < enemyConfig.chancePastMin
+                )
                 {
                     SpawnEnemy(enemyConfig.enemyType);
                 }
@@ -132,15 +141,13 @@ namespace RA2Survivors
         public void SpawnEnemy(EEntityType type)
         {
             Enemy enemy = SpawnerService.SpawnEnemy(type, player.GlobalTransform.Origin);
-            AddChild(enemy);
-            enemies.Add(enemy);
+            enemyNode.AddChild(enemy);
         }
 
         public void SpawnExpOrb(Vector3 position, double expAmount)
         {
             ExpOrb expOrb = ResourceProvider.CreateExpOrb(position, expAmount);
-            AddChild(expOrb);
-            expOrbs.Add(expOrb);
+            expOrbNode.AddChild(expOrb);
         }
 
         public static List<Enemy> GetClosestEnemiesToPlayer(int amount)

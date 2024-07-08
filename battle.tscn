@@ -59,7 +59,13 @@ theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("4_aq6wt")
 
-[node name="Gamemode" type="Node" parent="."]
+[node name="Gamemode" type="Node" parent="." node_paths=PackedStringArray("enemyNode", "expOrbNode")]
 script = ExtResource("1_6tjb4")
+enemyNode = NodePath("EnemyNodes")
+expOrbNode = NodePath("ExpNodes")
+
+[node name="ExpNodes" type="Node" parent="Gamemode"]
+
+[node name="EnemyNodes" type="Node" parent="Gamemode"]
 
 [node name="4_genies_wish" parent="." instance=ExtResource("7_ck3a1")]
