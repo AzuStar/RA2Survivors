@@ -18,8 +18,6 @@ namespace RA2Survivors
 				expDropped = 1,
 			};
 			stats.health = stats.maxHealth;
-
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("idogdiea"));
 		}
 	}
 }

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://btq6pdg3xy4i3"]
+[gd_scene load_steps=8 format=3 uid="uid://btq6pdg3xy4i3"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy/Spy.cs" id="1_x0j7t"]
 [ext_resource type="Texture2D" uid="uid://hduiwuiho2px" path="res://Assets/Units/spy.png" id="2_jahu8"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="3_hvuso"]
+[ext_resource type="AudioStream" uid="uid://d208astm0srx5" path="res://Assets/Audio/ispydia.wav" id="4_rcvx8"]
+[ext_resource type="AudioStream" uid="uid://chet12ixp4qk1" path="res://Assets/Audio/ispydib.wav" id="5_ldyny"]
+[ext_resource type="AudioStream" uid="uid://c3qq6u5gdorey" path="res://Assets/Audio/ispydic.wav" id="6_8lv65"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ishly"]
 radius = 0.6
@@ -24,3 +27,14 @@ texture = ExtResource("2_jahu8")
 hframes = 12
 vframes = 8
 script = ExtResource("3_hvuso")
+
+[node name="dyingsounds" type="Node" parent="."]
+
+[node name="ispydia" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("4_rcvx8")
+
+[node name="ispydib" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("5_ldyny")
+
+[node name="ispydic" type="AudioStreamPlayer3D" parent="dyingsounds"]
+stream = ExtResource("6_8lv65")

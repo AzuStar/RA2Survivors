@@ -123,6 +123,15 @@ namespace RA2Survivors
 
             DyingAnims.Add("death");
             DyingAnims.Add("death2");
+
+            Node dyingsounds = FindChild("dyingsounds");
+            if (dyingsounds != null)
+            {
+                foreach (var s in dyingsounds.GetChildren())
+                {
+                    DyingSounds.Add((AudioStreamPlayer3D)s);
+                }
+            }
         }
 
         public override void _PhysicsProcess(double delta)
