@@ -17,15 +17,17 @@ namespace RA2Survivors
         public bool Loop = false;
     }
 
+
     public partial class RA2Sprite3D : Sprite3D
     {
+        private static float ZERO_PRECISION = 1.0f;
         public static string animDirFromVelocity(Vector3 velocity)
         {
-            if (velocity.Length() < 0.01)
+            if (velocity.Length() < ZERO_PRECISION)
             {
                return "s";
             }
-            else if (velocity.X == 0 && velocity.Z < 0)
+            else if (Math.Abs(velocity.X) < ZERO_PRECISION && velocity.Z < 0)
             {
                 return "n";
             }
@@ -33,7 +35,7 @@ namespace RA2Survivors
             {
                 return "nw";
             }
-            else if (velocity.X < 0 && velocity.Z == 0)
+            else if (velocity.X < 0 && Math.Abs(velocity.Z) < ZERO_PRECISION)
             {
                 return "w";
             }
@@ -41,7 +43,7 @@ namespace RA2Survivors
             {
                 return "sw";
             }
-            else if (velocity.X == 0 && velocity.Z > 0)
+            else if (Math.Abs(velocity.X) < ZERO_PRECISION && velocity.Z > 0)
             {
                 return "s";
             }
@@ -49,7 +51,7 @@ namespace RA2Survivors
             {
                 return "se";
             }
-            else if (velocity.X > 0 && velocity.Z == 0)
+            else if (velocity.X > 0 && Math.Abs(velocity.Z) < ZERO_PRECISION)
             {
                 return "e";
             }

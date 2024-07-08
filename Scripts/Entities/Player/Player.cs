@@ -69,28 +69,28 @@ namespace RA2Survivors
 			HealthBar.SetHealth(stats.health, stats.maxHealth);
 		}
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-            if (upgradesToSelect > 0)
-            {
-                // randomize order and select the first 3
-                UpgradeButtonSettings[] upgradesToDisplay = availableUpgrades
-                    .OrderBy(x => GD.Randi())
-                    .Take(3)
-                    .ToArray();
+		public override void _Process(double delta)
+		{
+			base._Process(delta);
+			if (upgradesToSelect > 0)
+			{
+				// randomize order and select the first 3
+				UpgradeButtonSettings[] upgradesToDisplay = availableUpgrades
+					.OrderBy(x => GD.Randi())
+					.Take(3)
+					.ToArray();
 
-                UpgradeSelector.CreateSelection(upgradesToDisplay);
-                upgradesToSelect--;
-            }
-        }
+				UpgradeSelector.CreateSelection(upgradesToDisplay);
+				upgradesToSelect--;
+			}
+		}
 
-        public override void _PhysicsProcess(double delta)
-        {
-            base._PhysicsProcess(delta);
-            if (movementVelocity.Length() > 0)
-                ApplySlidingForceToRigidBodies();
-        }
+		public override void _PhysicsProcess(double delta)
+		{
+			base._PhysicsProcess(delta);
+			if (movementVelocity.Length() > 0)
+				ApplySlidingForceToRigidBodies();
+		}
 
 		public override void _IntegrateForces(PhysicsDirectBodyState3D state)
 		{

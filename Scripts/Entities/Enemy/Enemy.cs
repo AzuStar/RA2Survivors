@@ -12,6 +12,7 @@ namespace RA2Survivors
 		protected RA2Sprite3D Sprite;
 
 		protected List<AudioStreamPlayer3D> DyingSounds = new List<AudioStreamPlayer3D>();
+		protected List<string> DyingAnims = new List<string>();
 
 		public override void _Ready()
 		{
@@ -68,60 +69,26 @@ namespace RA2Survivors
 				Die();
 			}
 
-			if (velocity.X == 0 && velocity.Z == 0)
-			{
+			if (Freeze) {
 				Sprite.PlayAnim("face_s");
-			}
-			else if (velocity.X == 0 && velocity.Z < 0)
+			} else
 			{
-				Sprite.PlayAnim("run_n");
-			}
-			else if (velocity.X < 0 && velocity.Z < 0)
-			{
-				Sprite.PlayAnim("run_nw");
-			}
-			else if (velocity.X < 0 && velocity.Z == 0)
-			{
-				Sprite.PlayAnim("run_w");
-			}
-			else if (velocity.X < 0 && velocity.Z > 0)
-			{
-				Sprite.PlayAnim("run_sw");
-			}
-			else if (velocity.X == 0 && velocity.Z > 0)
-			{
-				Sprite.PlayAnim("run_s");
-			}
-			else if (velocity.X > 0 && velocity.Z > 0)
-			{
-				Sprite.PlayAnim("run_se");
-			}
-			else if (velocity.X > 0 && velocity.Z == 0)
-			{
-				Sprite.PlayAnim("run_e");
-			}
-			else if (velocity.X > 0 && velocity.Z < 0)
-			{
-				Sprite.PlayAnim("run_ne");
+				Sprite.PlayAnimWithDir("run", velocity);
 			}
 		}
 
 		public override void OnDying()
 		{
+			GamemodeLevel1.instance.enemies.Remove(this);
+			GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
+			GamemodeLevel1.instance.player.AddExp(stats.expDropped);
 			if (DyingSounds.Count > 0) 
 			{
 				DyingSounds[GD.RandRange(0, DyingSounds.Count - 1)].Play();
 			}
-			GamemodeLevel1.instance.enemies.Remove(this);
-			GamemodeLevel1.instance.enemyCount[(int)associatedEntity]--;
-			GamemodeLevel1.instance.player.AddExp(stats.expDropped);
-			if (GD.RandRange(0, 1) == 0 ? false : true)
+			if (DyingAnims.Count > 0) 
 			{
-				Sprite.PlayAnim("death");
-			}
-			else
-			{
-				Sprite.PlayAnim("death2");
+				Sprite.PlayAnim(DyingAnims[GD.RandRange(0, DyingAnims.Count - 1)]);
 			}
 		}
 	}

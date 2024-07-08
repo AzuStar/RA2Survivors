@@ -19,6 +19,12 @@ namespace RA2Survivors
                         enemyType = EEntityType.GI,
                         minEnemies = 25,
                         chancePastMin = 0.1f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 5,
+                        chancePastMin = 0.1f
                     }
                 ],
                 waveDuration = 301

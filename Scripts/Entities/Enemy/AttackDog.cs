@@ -2,9 +2,9 @@ using Godot;
 
 namespace RA2Survivors
 {
-	public partial class GI : Enemy
+	public partial class AttackDog : Enemy
 	{
-		public override EEntityType associatedEntity => EEntityType.GI;
+		public override EEntityType associatedEntity => EEntityType.AttackDog;
 
 		public override void _Ready()
 		{
@@ -13,7 +13,7 @@ namespace RA2Survivors
 			{
 				damage = 10,
 				maxHealth = 5,
-				movementSpeed = 2,
+				movementSpeed = 10,
 				expDropped = 1,
 			};
 			stats.health = stats.maxHealth;
@@ -118,11 +118,7 @@ namespace RA2Survivors
 				}
 			);
 
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidia"));
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidib"));
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidic"));
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidid"));
-			DyingSounds.Add((AudioStreamPlayer3D)FindChild("igidie"));
+			DyingSounds.Add((AudioStreamPlayer3D)FindChild("idogdiea"));
 			DyingAnims.Add("death");
 			DyingAnims.Add("death2");
 		}
