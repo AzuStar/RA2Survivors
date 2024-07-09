@@ -67,10 +67,10 @@ namespace RA2Survivors
         public string CurrentAnim;
         public bool CurrentAnimFinished;
         private RA2SpriteAnim CurrentAnimDef;
-        private double CurrentFrameTime;
+        public double CurrentFrameTime;
 
 
-        private double FrameTime = 1.0 / 5; // TODO this is wrong lol
+        public double FrameTime = 1.0 / 5; // TODO this is wrong lol
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready() { }
@@ -86,6 +86,7 @@ namespace RA2Survivors
                 CurrentFrameTime = 0.0;
             }
         }
+
         public void PlayAnimWithDir(string anim, Vector3 velocity, bool force = false)
         {
             PlayAnim(anim + "_" + animDirFromVelocity(velocity), force);

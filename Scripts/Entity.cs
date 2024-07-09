@@ -10,6 +10,12 @@ namespace RA2Survivors
         protected List<CollisionShape3D> colliders = new List<CollisionShape3D>();
         public bool dead = false;
 
+        private static List<string> DeathSpritePaths = new List<string>() {
+            "Effects/death_a.tscn",
+            "Effects/death_b.tscn",
+            "Effects/death_c.tscn",
+        };
+
         public override void _Ready()
         {
             base._Ready();
@@ -78,7 +84,15 @@ namespace RA2Survivors
             LinearVelocity = Vector3.Zero;
 
             SceneTreeTimer recycleTim = GetTree().CreateTimer(1.5f);
-            recycleTim.Timeout += () => QueueFree();
+            recycleTim.Timeout += () => 
+            {
+                QueueFree();
+                RA2AnimatedSprite3D.PlaySpriteScene(
+                    GlobalPosition,
+                    DeathSpritePaths[GD.RandRange(0, DeathSpritePaths.Count - 1)],
+                    10
+                );
+            };
         }
 
         public void PlaySound(string soundName)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://o43lw3xeljux"]
+
+[ext_resource type="Texture2D" uid="uid://cln5c8xxaj5a5" path="res://Assets/Effects/piffpiff.png" id="1_l553m"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_d14n7"]
+
+[node name="PiffPiff" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 0, -1.49091)
+render_priority = 1
+texture = ExtResource("1_l553m")
+hframes = 4
+vframes = 2
+script = ExtResource("2_d14n7")

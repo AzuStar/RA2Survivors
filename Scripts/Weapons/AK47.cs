@@ -7,8 +7,8 @@ namespace RA2Survivors
 {
     public partial class AK47 : Weapon
     {
-        public double explosiveShellChance = 1;
-        public double instantKillChance = 0;
+        public double explosiveShellChance = 0;
+        public double instantKillChance = 0.2;
         public double critChance = 0;
 
         public AK47()
@@ -144,20 +144,25 @@ namespace RA2Survivors
             {
                 if (GD.Randf() < instantKillChance)
                 {
-                    // make target melt from radiation
-                    // t.DyingAnims = [];
+                    RA2AnimatedSprite3D.PlaySpriteScene(t.GlobalPosition, "Effects/nukedie.tscn", 2);
+                    Sprite3D sprite = (Sprite3D)t.FindChild("Sprite3D");
+                    if (sprite != null)
+                    {
+                        sprite.Hide();
+                    }
                     t.Die();
                 }
                 else
                 {
                     owner.DealDamage(t, owner.stats.damage * damageMultiplier);
+                    RA2AnimatedSprite3D.PlaySpriteScene(t.GlobalPosition, "Effects/piffpiff.tscn", 1.0/5.0);
                 }
             }
 
             owner.PlaySound("iconatta.wav");
             owner.Sprite.PlayAnimWithDir(
                 "fire",
-                owner.GlobalPosition.DirectionTo(targets.First().GlobalPosition),
+                targets.Last().GlobalPosition - owner.GlobalPosition,
                 true
             );
         }

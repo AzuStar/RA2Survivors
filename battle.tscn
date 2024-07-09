@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bakls0qxpv1lo"]
+[gd_scene load_steps=14 format=3 uid="uid://bakls0qxpv1lo"]
 
 [ext_resource type="Script" path="res://Scripts/GamemodeLevel1.cs" id="1_6tjb4"]
 [ext_resource type="Script" path="res://Scripts/PauseService.cs" id="1_rw6an"]
@@ -7,6 +7,12 @@
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeSelector.cs" id="4_aq6wt"]
 [ext_resource type="Script" path="res://Scripts/ExpBar.cs" id="6_251la"]
 [ext_resource type="PackedScene" uid="uid://duogcxa51rmup" path="res://Assets/Levels/4_genies_wish.tscn" id="7_ck3a1"]
+[ext_resource type="Texture2D" uid="uid://bwbivdpgovj5h" path="res://Assets/Props/ctmex03.png" id="8_1uog6"]
+[ext_resource type="Texture2D" uid="uid://yvlwlclm1d3p" path="res://Assets/Props/tree21.png" id="9_7e38y"]
+[ext_resource type="Texture2D" uid="uid://b081wukb07rwj" path="res://Assets/Props/tree22.png" id="10_blg7n"]
+[ext_resource type="Texture2D" uid="uid://cagn0lv1kr767" path="res://Assets/Props/tree13.png" id="10_lwxmm"]
+[ext_resource type="Texture2D" uid="uid://c810hqbpsw8nm" path="res://Assets/Props/tree19.png" id="11_0n1k5"]
+[ext_resource type="Texture2D" uid="uid://bebllgu0u37wt" path="res://Assets/Props/tree20.png" id="11_gfsw1"]
 
 [node name="Root" type="Node3D"]
 
@@ -69,3 +75,93 @@ expOrbNode = NodePath("ExpNodes")
 [node name="EnemyNodes" type="Node" parent="Gamemode"]
 
 [node name="4_genies_wish" parent="." instance=ExtResource("7_ck3a1")]
+
+[node name="BuildingSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -38.9394, 0.815245, -54.0394)
+pixel_size = 0.1
+texture = ExtResource("8_1uog6")
+
+[node name="TreeSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0.024, 1, -0.063)
+pixel_size = 0.1
+texture = ExtResource("9_7e38y")
+
+[node name="TreeSprite11" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 2.99611, 1, -31.3405)
+pixel_size = 0.1
+texture = ExtResource("9_7e38y")
+
+[node name="TreeSprite13" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 2.94654, 0.913652, -18.0274)
+pixel_size = 0.1
+texture = ExtResource("10_lwxmm")
+
+[node name="TreeSprite14" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -17.7018, 1.05338, -11.7953)
+pixel_size = 0.1
+texture = ExtResource("11_gfsw1")
+
+[node name="TreeSprite15" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -14.7103, 1.05338, -28.6081)
+pixel_size = 0.1
+texture = ExtResource("11_gfsw1")
+
+[node name="TreeSprite16" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 51.0289, 1.05338, -8.85571)
+pixel_size = 0.1
+texture = ExtResource("11_gfsw1")
+
+[node name="TreeSprite17" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 72.1712, 1.05338, 10.6617)
+pixel_size = 0.1
+texture = ExtResource("11_gfsw1")
+
+[node name="TreeSprite2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -11.7696, 1.09837, 3.01004)
+pixel_size = 0.1
+texture = ExtResource("10_blg7n")
+
+[node name="TreeSprite6" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -41.9757, 1.09837, 13.5243)
+pixel_size = 0.1
+texture = ExtResource("10_blg7n")
+
+[node name="TreeSprite12" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -72.2185, 1.09837, -25.5395)
+pixel_size = 0.1
+texture = ExtResource("10_blg7n")
+
+[node name="TreeSprite5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 5.97827, 1.09837, -10.4107)
+pixel_size = 0.1
+texture = ExtResource("10_blg7n")
+
+[node name="TreeSprite3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 21.1251, 1.21623, 7.63263)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
+
+[node name="TreeSprite8" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 21.0304, 1.21623, -19.4298)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
+
+[node name="TreeSprite9" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, -14.7397, 1.21623, -22.4944)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
+
+[node name="TreeSprite10" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 17.7761, 1.21623, -34.3948)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
+
+[node name="TreeSprite7" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 53.8263, 1.21623, 25.5628)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
+
+[node name="TreeSprite4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 21.1517, 1.21623, -1.46544)
+pixel_size = 0.1
+texture = ExtResource("11_0n1k5")
