@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://fddl5c5deglr"]
+
+[ext_resource type="Texture2D" uid="uid://dknv0hu8h8hwk" path="res://Assets/Effects/s_bang24.png" id="1_b2eux"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_qhvw4"]
+
+[node name="Crater" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 0.261467, 2.98858, 0, -2.98858, 0.261467, 0, 1, 0)
+texture = ExtResource("1_b2eux")
+hframes = 4
+vframes = 2
+script = ExtResource("2_qhvw4")

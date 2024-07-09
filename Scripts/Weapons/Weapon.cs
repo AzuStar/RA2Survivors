@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace RA2Survivors
@@ -38,7 +39,7 @@ namespace RA2Survivors
 
         public void Reload()
         {
-            _reloadTimeout *= 0.9;
+            _reloadTimeout *= 0.1;
         }
 
         public override void _Process(double delta)
@@ -61,15 +62,8 @@ namespace RA2Survivors
                 _burstTimeout -= delta;
                 if (_burstTimeout <= 0)
                 {
-                    // check that all references in _selectedTargets are still valid
-                    for (int i = _selectedTargets.Count - 1; i >= 0; i--)
-                    {
-                        Enemy iterator = _selectedTargets[i];
-                        if (iterator.dead)
-                        {
-                            _selectedTargets.Remove(iterator);
-                        }
-                    }
+                    _selectedTargets = _selectedTargets.Where(x => !x.dead).ToList();
+
                     if (_selectedTargets.Count == 0)
                     {
                         currentState = EWeaponState.Reloading;
@@ -97,6 +91,7 @@ namespace RA2Survivors
                     return;
                 }
                 _reloadTimeout = reloadSpeed / owner.stats.attackSpeed;
+                _burstTimeout = burstDelay / owner.stats.attackSpeed;
                 _burstsLeft = burstCount;
                 currentState = EWeaponState.Shooting;
             }

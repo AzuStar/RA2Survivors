@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://2hajrwjfytwr"
-path="res://.godot/imported/iconatc.wav-fc8a1b0d33f8bc7db03caba49e878b7f.sample"
+uid="uid://62d14so8v7m6"
+path="res://.godot/imported/BossCrate.wav-c5a3e7d62059bf503228bb1aa9600509.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/iconatc.wav"
-dest_files=["res://.godot/imported/iconatc.wav-fc8a1b0d33f8bc7db03caba49e878b7f.sample"]
+source_file="res://Assets/Audio/BossCrate.wav"
+dest_files=["res://.godot/imported/BossCrate.wav-c5a3e7d62059bf503228bb1aa9600509.sample"]
 
 [params]
 

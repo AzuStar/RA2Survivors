@@ -7,6 +7,7 @@ namespace RA2Survivors
     {
         public double airStrikeAoe = 5;
         public double suspiciousPackageChance;
+        public double extraBombChance;
 
         public AirStrike()
         {
@@ -20,7 +21,7 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AirStrike: Call in the reinforcements!",
-                    description = "Airstrike is called faster +10%",
+                    description = "Airstrike is called faster [color=#FF0000]+10%[/color]",
                     callback = () =>
                     {
                         reloadSpeed *= 0.9;
@@ -29,7 +30,7 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AirStrike: Bigger Explosions",
-                    description = "Airstrike bomb explosion AoE range +1",
+                    description = "Airstrike bomb explosion AoE range [color=#FF0000]+1[/color]",
                     callback = () =>
                     {
                         airStrikeAoe += 1;
@@ -38,7 +39,7 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AirStrike: Air Fleet",
-                    description = "Airstrike bomb count +1",
+                    description = "Airstrike bomb count [color=#FF0000]+1[/color]",
                     callback = () =>
                     {
                         multishot++;
@@ -54,7 +55,7 @@ namespace RA2Survivors
                         "Grants [[color=#FF0000]10%[/color] chance, airstrike will deliver a package on top of the player that can be picked up to restore health",
                     callback = () =>
                     {
-                        damageMultiplier += 0.25;
+                        suspiciousPackageChance += 0.1;
                     }
                 },
                 new UpgradeButtonSettings
@@ -62,7 +63,10 @@ namespace RA2Survivors
                     title = "AirStrike: For the Union!",
                     description =
                         "Each airstrike bomb has [color=#FF0000]20%[/color] chance to spawn a bomb at a random position around your character",
-                    callback = () => { }
+                    callback = () =>
+                    {
+                        extraBombChance += 0.2;
+                    }
                 }
             ];
         }

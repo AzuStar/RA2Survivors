@@ -73,7 +73,7 @@ namespace RA2Survivors
                     new UpgradeButtonSettings
                     {
                         title = "Attack Speed Upgrade",
-                        description = "Increases attack speed by 5%",
+                        description = "Increases attack speed by [color=#FF0000]5%[/color]",
                         callback = () =>
                         {
                             stats.attackSpeed += 0.05;
@@ -82,7 +82,7 @@ namespace RA2Survivors
                     new UpgradeButtonSettings
                     {
                         title = "Movement Speed Upgrade",
-                        description = "Increases movement speed by 0.5",
+                        description = "Increases movement speed by [color=#FF0000]0.5[/color]",
                         callback = () =>
                         {
                             stats.movementSpeed += 0.5;
@@ -91,7 +91,7 @@ namespace RA2Survivors
                     new UpgradeButtonSettings
                     {
                         title = "Health Regen Upgrade",
-                        description = "Increases health regen by 0.01",
+                        description = "Increases health regen by [color=#FF0000]1% / 5s[/color]",
                         callback = () =>
                         {
                             stats.healthRegen += 0.01;
@@ -100,13 +100,26 @@ namespace RA2Survivors
                     new UpgradeButtonSettings
                     {
                         title = "Max Health Upgrade",
-                        description = "Increases max health by 10",
+                        description = "Increases max health by [color=#FF0000]10[/color]",
                         callback = () =>
                         {
                             stats.health += 10;
                         }
                     },
                 ]
+            );
+
+            uniqueUpgrades.Add(
+                new UpgradeButtonSettings
+                {
+                    title = "Player: Soviet Power Supreme!",
+                    description = "You will now get [color=#FF0000]100%[/color] more experience!",
+                    callback = () =>
+                    {
+                        stats.expGainRate += 1;
+                        PlaySound("q_sovietpowersupreme.wav");
+                    }
+                }
             );
         }
 
@@ -127,7 +140,7 @@ namespace RA2Survivors
                 {
                     Sound3DService.PlaySoundAtNode(this, "iconfeb.wav");
                     LastQuoteTime = currentTime;
-                } 
+                }
             }
         }
 
@@ -137,7 +150,7 @@ namespace RA2Survivors
             if (upgradesToSelect > 0)
             {
                 // randomize order and select the first 3
-                UpgradeButtonSettings[] upgradesToDisplay = commonUpgrades
+                UpgradeButtonSettings[] upgradesToDisplay = uniqueUpgrades
                     .OrderBy(x => GD.Randi())
                     .Take(3)
                     .ToArray();

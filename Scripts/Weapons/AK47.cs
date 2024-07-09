@@ -8,8 +8,22 @@ namespace RA2Survivors
     public partial class AK47 : Weapon
     {
         public double explosiveShellChance = 0;
-        public double instantKillChance = 0.2;
+        public double instantKillChance = 0;
         public double critChance = 0;
+
+        public string[] explosiveShellLaunchSfx =
+        [
+            "ExplosiveShellsLaunch1.wav",
+            "ExplosiveShellsLaunch2.wav"
+        ];
+
+        public string[] explosiveShellCraterVfx =
+        [
+            "Effects/Crater1.tscn",
+            "Effects/Crater2.tscn",
+            "Effects/Crater3.tscn",
+            "Effects/Crater4.tscn"
+        ];
 
         public AK47()
         {
@@ -24,7 +38,7 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Extended magazine shell",
-                    description = "Increases burst count +1",
+                    description = "Increases burst count [color=#FF0000]+1[/color]",
                     callback = () =>
                     {
                         burstCount++;
@@ -60,6 +74,7 @@ namespace RA2Survivors
                     callback = () =>
                     {
                         explosiveShellChance += 0.11;
+                        owner.PlaySound("q_youaresure.wav");
                     }
                 },
                 new UpgradeButtonSettings
@@ -101,13 +116,14 @@ namespace RA2Survivors
             if (_burstsLeft == burstCount && GD.Randf() < explosiveShellChance)
             {
                 currentState = EWeaponState.Idle;
-                owner.PlaySound("iconatc.wav");
+                owner.PlaySound("q_youaresure.wav");
                 Timer tim = new Timer();
                 tim.OneShot = true;
                 tim.WaitTime = 0.15;
                 tim.Timeout += () =>
                 {
-                    owner.PlaySound("iconatta.wav");
+                    currentState = EWeaponState.Reloading;
+                    owner.PlaySound(explosiveShellLaunchSfx.TakeRandom(1).First());
                     owner.Sprite.PlayAnimWithDir("fire", Vector3.Zero, true);
                     foreach (var t in targets)
                     {
@@ -119,12 +135,17 @@ namespace RA2Survivors
                         shell.callback = () =>
                         {
                             Node3D crater = ResourceProvider.CreateResource<Node3D>(
-                                "Effects/Crater1.tscn"
+                                explosiveShellCraterVfx.TakeRandom(1).First()
                             );
                             GetTree().Root.AddChild(crater);
                             crater.GlobalPosition = shell.GlobalPosition;
-                            new LifetimedResource(1.25).StartLifetime(crater);
-                            Sound3DService.PlaySoundAtNode(crater, "boom1.wav");
+                            new LifetimedResource(3).StartLifetime(crater);
+                            RA2AnimatedSprite3D.PlaySpriteScene(
+                                shell.GlobalPosition,
+                                "Effects/ExploSmall1.tscn",
+                                0.25
+                            );
+                            Sound3DService.PlaySoundAtNode(crater, "gexp07a.wav");
                             var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 4);
                             foreach (var t in list)
                             {
@@ -133,7 +154,6 @@ namespace RA2Survivors
                         };
                         AddChild(shell);
                     }
-                    currentState = EWeaponState.Reloading;
                     tim.QueueFree();
                 };
                 tim.Autostart = true;
@@ -144,7 +164,11 @@ namespace RA2Survivors
             {
                 if (GD.Randf() < instantKillChance)
                 {
-                    RA2AnimatedSprite3D.PlaySpriteScene(t.GlobalPosition, "Effects/nukedie.tscn", 2);
+                    RA2AnimatedSprite3D.PlaySpriteScene(
+                        t.GlobalPosition,
+                        "Effects/nukedie.tscn",
+                        2
+                    );
                     Sprite3D sprite = (Sprite3D)t.FindChild("Sprite3D");
                     if (sprite != null)
                     {
@@ -155,7 +179,11 @@ namespace RA2Survivors
                 else
                 {
                     owner.DealDamage(t, owner.stats.damage * damageMultiplier);
-                    RA2AnimatedSprite3D.PlaySpriteScene(t.GlobalPosition, "Effects/piffpiff.tscn", 1.0/5.0);
+                    RA2AnimatedSprite3D.PlaySpriteScene(
+                        t.GlobalPosition,
+                        "Effects/piffpiff.tscn",
+                        1.0 / 5.0
+                    );
                 }
             }
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0su8ddj32r7"]
+
+[ext_resource type="Texture2D" uid="uid://b4mb36h3e550y" path="res://Assets/Effects/crater07.png" id="1_cxl8s"]
+
+[node name="Crater" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 0.261467, 2.98858, 0, -2.98858, 0.261467, 0, 1, 0)
+texture = ExtResource("1_cxl8s")
