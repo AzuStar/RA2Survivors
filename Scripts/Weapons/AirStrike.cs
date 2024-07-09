@@ -60,11 +60,9 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AirStrike: For the Union!",
-                    description = "Each airstrike bomb has [color=#FF0000]20%[/color]",
-                    callback = () =>
-                    {
-                        multishot++;
-                    }
+                    description =
+                        "Each airstrike bomb has [color=#FF0000]20%[/color] chance to spawn a bomb at a random position around your character",
+                    callback = () => { }
                 }
             ];
         }
