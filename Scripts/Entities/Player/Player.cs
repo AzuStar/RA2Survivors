@@ -56,6 +56,7 @@ namespace RA2Survivors
 
         public override void _Ready()
         {
+            base._Ready();
             Sprite = (RA2Sprite3D)FindChild("Sprite3D");
 
             ContactMonitor = true;
