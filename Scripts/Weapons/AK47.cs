@@ -33,7 +33,7 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Faster reload",
-                    description = "Reload speed +10%",
+                    description = "Reload speed [color=#FF0000]+10%[/color]",
                     callback = () =>
                     {
                         reloadSpeed *= 0.9;
@@ -42,7 +42,8 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Critical hit",
-                    description = "Increases chance to critically Strke by 5%",
+                    description =
+                        "Increases chance to critically Strke by [color=#FF0000]5%[/color]",
                     callback = () =>
                     {
                         critChance += 0.05;
@@ -55,7 +56,7 @@ namespace RA2Survivors
                 {
                     title = "AK47: You are sure?",
                     description =
-                        "Grants 11% chance to replace a burst with an explosive shell that deals damage in AoE",
+                        "Grants [color=#FF0000]11%[/color] chance to replace a burst with an explosive shell that deals damage in AoE",
                     callback = () =>
                     {
                         explosiveShellChance += 0.11;
@@ -64,7 +65,8 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Attacking!",
-                    description = "Slows down reload by 30%, but shoots +2 targets",
+                    description =
+                        "Slows down reload by 30%, but shoots [color=#FF0000]+2[/color] targets",
                     callback = () =>
                     {
                         reloadSpeed *= 1.3;
@@ -74,7 +76,8 @@ namespace RA2Survivors
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Radiation bullets",
-                    description = "Grants 4% chance to instantly kill a target",
+                    description =
+                        "Grants [color=#FF0000]4%[/color] chance to instantly kill a target",
                     callback = () =>
                     {
                         instantKillChance += 0.04;
