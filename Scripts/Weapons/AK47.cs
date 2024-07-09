@@ -7,7 +7,7 @@ namespace RA2Survivors
 {
     public partial class AK47 : Weapon
     {
-        public double explosiveShellChance = 1;
+        public double explosiveShellChance = 0;
         public double instantKillChance = 0;
         public double critChance = 0;
 
@@ -97,24 +97,44 @@ namespace RA2Survivors
         {
             if (_burstsLeft == burstCount && GD.Randf() < explosiveShellChance)
             {
-                foreach (var t in targets)
+                currentState = EWeaponState.Idle;
+                owner.PlaySound("iconatc.wav");
+                Timer tim = new Timer();
+                tim.OneShot = true;
+                tim.WaitTime = 0.15;
+                tim.Timeout += () =>
                 {
-                    ExplosiveShell shell = ResourceProvider.CreateResource<ExplosiveShell>(
-                        "Projectiles/ExplosiveShell.tscn"
-                    );
-                    shell.targetPosition = t.GlobalPosition;
-                    shell.startPosition = owner.GlobalPosition;
-                    shell.callback = () =>
+                    owner.PlaySound("iconatta.wav");
+                    owner.Sprite.PlayAnimWithDir("fire", Vector3.Zero, true);
+                    foreach (var t in targets)
                     {
-                        var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 2);
-                        foreach (var t in list)
+                        ExplosiveShell shell = ResourceProvider.CreateResource<ExplosiveShell>(
+                            "Projectiles/ExplosiveShell.tscn"
+                        );
+                        shell.targetPosition = t.GlobalPosition;
+                        shell.startPosition = owner.GlobalPosition;
+                        shell.callback = () =>
                         {
-                            owner.DealDamage(t, owner.stats.damage * damageMultiplier);
-                        }
-                    };
-                    AddChild(shell);
-                }
-                currentState = EWeaponState.Reloading;
+                            Node3D crater = ResourceProvider.CreateResource<Node3D>(
+                                "Effects/Crater1.tscn"
+                            );
+                            GetTree().Root.AddChild(crater);
+                            crater.GlobalPosition = shell.GlobalPosition;
+                            new LifetimedResource(1.25).StartLifetime(crater);
+                            Sound3DService.PlaySoundAtNode(crater, "boom1.wav");
+                            var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 4);
+                            foreach (var t in list)
+                            {
+                                owner.DealDamage(t, owner.stats.damage * damageMultiplier);
+                            }
+                        };
+                        AddChild(shell);
+                    }
+                    currentState = EWeaponState.Reloading;
+                    tim.QueueFree();
+                };
+                tim.Autostart = true;
+                AddChild(tim);
                 return;
             }
             foreach (var t in targets)
@@ -131,7 +151,7 @@ namespace RA2Survivors
                 }
             }
 
-            ((AudioStreamPlayer3D)owner.FindChild("iconatta")).Play();
+            owner.PlaySound("iconatta.wav");
             owner.Sprite.PlayAnimWithDir(
                 "fire",
                 owner.GlobalPosition.DirectionTo(targets.First().GlobalPosition),

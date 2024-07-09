@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bakls0qxpv1lo"]
+[gd_scene load_steps=9 format=3 uid="uid://bakls0qxpv1lo"]
 
 [ext_resource type="Script" path="res://Scripts/GamemodeLevel1.cs" id="1_6tjb4"]
 [ext_resource type="Script" path="res://Scripts/PauseService.cs" id="1_rw6an"]
+[ext_resource type="Script" path="res://Scripts/MusicService.cs" id="2_d1agb"]
 [ext_resource type="Script" path="res://Scripts/ExpBar.cs" id="2_qoepl"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="3_a3ylo"]
 [ext_resource type="Theme" uid="uid://dtj7boqn5vo7r" path="res://HealthTheme.tres" id="3_bccbv"]
@@ -12,6 +13,9 @@
 
 [node name="PauseSerivice" type="Node" parent="."]
 script = ExtResource("1_rw6an")
+
+[node name="MusicService" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_d1agb")
 
 [node name="ExpBar" type="ProgressBar" parent="."]
 anchors_preset = 12

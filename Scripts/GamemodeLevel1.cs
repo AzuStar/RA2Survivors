@@ -26,7 +26,8 @@ namespace RA2Survivors
                         chancePastMin = 0.2f
                     },
                 ],
-                waveDuration = 30
+                waveDuration = 30,
+                waveMusic = "BullyKit.mp3"
             },
             new WaveConfig
             {
@@ -129,6 +130,10 @@ namespace RA2Survivors
                 {
                     SpawnEnemy(enemyConfig.enemyType);
                 }
+            }
+            if (!String.IsNullOrEmpty(currentWave.waveMusic))
+            {
+                MusicService.PlayMusic(currentWave.waveMusic);
             }
         }
 

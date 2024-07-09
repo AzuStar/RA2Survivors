@@ -4,6 +4,7 @@ namespace RA2Survivors
     {
         public WaveEnemyConfig[] enemyConfig;
         public double waveDuration;
+        public string waveMusic;
     }
 
     public class WaveEnemyConfig
