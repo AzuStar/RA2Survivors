@@ -177,7 +177,8 @@ namespace RA2Survivors
         public static List<Enemy> GetEnemiesInRange(Vector3 location, double range)
         {
             return instance
-                .enemies.Where(e => e.GlobalPosition.DistanceTo(location) < range)
+                .enemies.Where(e => !e.dead)
+                .Where(e => e.GlobalPosition.DistanceTo(location) < range)
                 .ToList();
         }
 
@@ -187,7 +188,8 @@ namespace RA2Survivors
         )
         {
             return instance
-                .enemies.OrderBy(e => e.distanceToPlayer)
+                .enemies.Where(e => !e.dead)
+                .OrderBy(e => e.distanceToPlayer)
                 .Where(e => e.distanceToPlayer < minRange)
                 .Take(amount)
                 .ToList();
