@@ -15,7 +15,7 @@ namespace RA2Survivors
                 attackRange = 1.9,
                 damage = 10,
                 maxHealth = 5,
-                movementSpeed = 4,
+                movementSpeed = 5,
                 expDropped = 1,
             };
             stats.health = stats.maxHealth;

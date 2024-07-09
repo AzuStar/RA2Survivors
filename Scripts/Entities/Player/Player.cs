@@ -7,7 +7,8 @@ namespace RA2Survivors
 {
     public partial class Player : Entity
     {
-        public int upgradesToSelect;
+        public int uniqueUpgradesToSelect;
+        public int commonUpgradesToSelect;
 
         public static double ExpFormula(int level) => 10 + 5 * level;
 
@@ -38,7 +39,7 @@ namespace RA2Survivors
             ExpBar.SetExp(stats.currentExp, nextLevelExp);
             LevelUp(levelUps);
 
-            stats.level = levelUps;
+            stats.level += levelUps;
         }
 
         public void AddExp(double amount)
@@ -48,7 +49,7 @@ namespace RA2Survivors
 
         public virtual void LevelUp(int times)
         {
-            upgradesToSelect += times;
+            commonUpgradesToSelect += times;
         }
 
         public override void SetHealth(double amount)
@@ -112,12 +113,11 @@ namespace RA2Survivors
             uniqueUpgrades.Add(
                 new UpgradeButtonSettings
                 {
-                    title = "Player: Soviet Power Supreme!",
-                    description = "You will now get [color=#FF0000]100%[/color] more experience!",
+                    title = "Soviet Power Supreme!",
+                    description = "You will now get [color=#860ac9]100%[/color] more experience!",
                     callback = () =>
                     {
                         stats.expGainRate += 1;
-                        PlaySound("q_sovietpowersupreme.wav");
                     }
                 }
             );
@@ -147,16 +147,26 @@ namespace RA2Survivors
         public override void _Process(double delta)
         {
             base._Process(delta);
-            if (upgradesToSelect > 0)
+            if (commonUpgradesToSelect > 0)
             {
                 // randomize order and select the first 3
+                UpgradeButtonSettings[] upgradesToDisplay = commonUpgrades
+                    .OrderBy(x => GD.Randi())
+                    .Take(3)
+                    .ToArray();
+
+                UpgradeSelector.CreateSelection(upgradesToDisplay);
+                commonUpgradesToSelect--;
+            }
+            else if (uniqueUpgradesToSelect > 0)
+            {
                 UpgradeButtonSettings[] upgradesToDisplay = uniqueUpgrades
                     .OrderBy(x => GD.Randi())
                     .Take(3)
                     .ToArray();
 
                 UpgradeSelector.CreateSelection(upgradesToDisplay);
-                upgradesToSelect--;
+                uniqueUpgradesToSelect--;
             }
         }
 
@@ -166,15 +176,30 @@ namespace RA2Survivors
             if (movementVelocity.Length() > 0)
                 ApplySlidingForceToRigidBodies();
 
-            foreach (ExpOrb orb in GamemodeLevel1.instance.expOrbs)
+            foreach (Pickup pickup in GamemodeLevel1.instance.pickups)
             {
-                if (orb.magnetTarget != null)
-                    continue;
-
-                double distance = GlobalPosition.DistanceTo(orb.GlobalPosition);
-                if (distance < stats.magnetRange)
+                switch (pickup)
                 {
-                    orb.magnetTarget = this;
+                    case ExpOrb orb:
+                        if (orb.magnetTarget != null)
+                            continue;
+
+                        double distance = GlobalPosition.DistanceTo(orb.GlobalPosition);
+                        if (distance < stats.magnetRange)
+                        {
+                            orb.magnetTarget = this;
+                        }
+                        break;
+
+                    case UpgradeCrate crate:
+                        distance = GlobalPosition.DistanceTo(crate.GlobalPosition);
+                        if (distance < 2)
+                        {
+                            crate.QueueFree();
+                            PlaySound("UpgradeCrate.wav", ignorePause: true);
+                            uniqueUpgradesToSelect++;
+                        }
+                        break;
                 }
             }
         }

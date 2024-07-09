@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace RA2Survivors
@@ -20,6 +21,20 @@ namespace RA2Survivors
                         + (spawnRangeZStart + spawnRangeZLength)
                             * (spawnRangeZStart + spawnRangeZLength)
                 ) + 1;
+        }
+
+        public static List<Enemy> SpawnEnemyCluster(EEntityType type, Vector3 center, int count)
+        {
+            List<Enemy> enemies = new List<Enemy>();
+            Vector3 offset = SpawnRangeOffset(center);
+            for (int i = 0; i < count; i++)
+            {
+                Enemy enemy = ResourceProvider.LoadEntity<Enemy>(type);
+                enemies.Add(enemy);
+                enemy.Transform = new Transform3D(Basis.Identity, offset);
+            }
+
+            return enemies;
         }
 
         public static Enemy SpawnEnemy(EEntityType type, Vector3 center)

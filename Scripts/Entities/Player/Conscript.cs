@@ -15,6 +15,19 @@ namespace RA2Survivors
                 expGainRate = 1,
                 magnetRange = 7.5,
             };
+            commonUpgrades.AddRange(
+                [
+                    new UpgradeButtonSettings
+                    {
+                        title = "Soviet Training",
+                        description = "Increases damage by [color=#FF0000]0.75[/color]",
+                        callback = () =>
+                        {
+                            stats.damage += 0.75;
+                        }
+                    }
+                ]
+            );
             Weapon akWeapon = new AK47();
             commonUpgrades.AddRange(akWeapon.commonUpgrades);
             uniqueUpgrades.AddRange(akWeapon.uniqueUpgrades);

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://chycpchesb0ja"]
+
+[ext_resource type="Texture2D" uid="uid://q7pttqua37by" path="res://Assets/Effects/parach.png" id="1_h1ec4"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_bonyu"]
+
+[node name="Paraschute" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 0, 0)
+render_priority = -1
+texture = ExtResource("1_h1ec4")
+hframes = 8
+vframes = 9
+frame = 14
+script = ExtResource("2_bonyu")

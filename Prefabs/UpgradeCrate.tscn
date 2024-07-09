@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3bgtje3hxcda"]
+
+[ext_resource type="Texture2D" uid="uid://clg1qfyeemw0" path="res://Assets/Pickups/crate.png" id="1_f2dj6"]
+[ext_resource type="Script" path="res://Scripts/UpgradeCrate.cs" id="2_0png5"]
+
+[node name="Crater" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 0.261467, 2.98858, 0, -2.98858, 0.261467, 0, 1, 0)
+texture = ExtResource("1_f2dj6")
+script = ExtResource("2_0png5")

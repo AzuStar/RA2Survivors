@@ -5,6 +5,7 @@ namespace RA2Survivors
 {
     public abstract partial class Enemy : Entity
     {
+        public bool despawnImmune = false;
         public double distanceToPlayer = 999;
         private Vector3 _pushForce;
         private float _builtInMass;
@@ -178,7 +179,12 @@ namespace RA2Survivors
 
             if (distanceToPlayer >= SpawnerService.DistanceDespawnThreshold)
             {
-                QueueFree();
+                if (despawnImmune)
+                    GlobalPosition = SpawnerService.SpawnRangeOffset(
+                        GamemodeLevel1.instance.player.GlobalPosition
+                    );
+                else
+                    QueueFree();
             }
 
             if (Freeze)
@@ -202,6 +208,7 @@ namespace RA2Survivors
             {
                 Sprite.PlayAnim(DyingAnims[GD.RandRange(0, DyingAnims.Count - 1)]);
             }
+            GamemodeLevel1.instance.SpawnCrate(GlobalPosition);
         }
 
         protected override void Dispose(bool disposing)

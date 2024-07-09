@@ -10,7 +10,8 @@ namespace RA2Survivors
         protected List<CollisionShape3D> colliders = new List<CollisionShape3D>();
         public bool dead = false;
 
-        private static List<string> DeathSpritePaths = new List<string>() {
+        private static List<string> DeathSpritePaths = new List<string>()
+        {
             "Effects/death_a.tscn",
             "Effects/death_b.tscn",
             "Effects/death_c.tscn",
@@ -84,7 +85,7 @@ namespace RA2Survivors
             LinearVelocity = Vector3.Zero;
 
             SceneTreeTimer recycleTim = GetTree().CreateTimer(1.5f);
-            recycleTim.Timeout += () => 
+            recycleTim.Timeout += () =>
             {
                 QueueFree();
                 RA2AnimatedSprite3D.PlaySpriteScene(
@@ -95,9 +96,9 @@ namespace RA2Survivors
             };
         }
 
-        public void PlaySound(string soundName)
+        public void PlaySound(string soundName, bool ignorePause = false)
         {
-            Sound3DService.PlaySoundAtNode(this, soundName);
+            Sound3DService.PlaySoundAtNode(this, soundName, ignorePause);
         }
     }
 }

@@ -2,10 +2,23 @@ namespace RA2Survivors
 {
     public class SpawnEventConfig
     {
-        public int waveNumber;
+        public double spawnTime;
+        public SpawnEventEnemyConfig[] enemyConfig;
+    }
+
+    public class SpawnEventEnemyConfig
+    {
+        public EEntityType enemyType;
         public int enemyCount;
-        public float timeBetweenSpawns;
-        public float spawnRandomFactor;
-        public float moveSpeed;
+        public Qudrant qudrant = Qudrant.Random;
+    }
+
+    public enum Qudrant
+    {
+        Random,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
     }
 }

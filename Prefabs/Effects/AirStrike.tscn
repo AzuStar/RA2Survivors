@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugfx31p5h0ug"]
+
+[ext_resource type="PackedScene" uid="uid://chycpchesb0ja" path="res://Prefabs/Effects/Paraschute.tscn" id="1_uqcys"]
+[ext_resource type="Texture2D" uid="uid://d4bwyjvhcm13j" path="res://Assets/Effects/bomb.png" id="2_75xdm"]
+
+[node name="AirStrike" type="Node3D"]
+
+[node name="Paraschute" parent="." instance=ExtResource("1_uqcys")]
+
+[node name="AirStrikeBomb" parent="." instance=ExtResource("1_uqcys")]
+transform = Transform3D(1.41, 0, 0, 0, 0.12289, 1.40463, 0, -1.40463, 0.12289, 0, 0, 0)
+texture = ExtResource("2_75xdm")
+hframes = 1
+vframes = 1
+frame = 0
+script = null

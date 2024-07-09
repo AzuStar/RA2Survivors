@@ -70,18 +70,17 @@ namespace RA2Survivors
                 {
                     title = "AK47: You are sure?",
                     description =
-                        "Grants [color=#FF0000]11%[/color] chance to replace a burst with an explosive shell that deals damage in AoE",
+                        "Grants [color=#860ac9]11%[/color] chance to replace a shot with an explosive shell that deals damage in AoE",
                     callback = () =>
                     {
                         explosiveShellChance += 0.11;
-                        owner.PlaySound("q_youaresure.wav");
                     }
                 },
                 new UpgradeButtonSettings
                 {
                     title = "AK47: Attacking!",
                     description =
-                        "Slows down reload by 30%, but shoots [color=#FF0000]+2[/color] targets",
+                        "Slows down reload by 30%, but shoots [color=#860ac9]+2[/color] targets",
                     callback = () =>
                     {
                         reloadSpeed *= 1.3;
@@ -92,7 +91,7 @@ namespace RA2Survivors
                 {
                     title = "AK47: Radiation bullets",
                     description =
-                        "Grants [color=#FF0000]4%[/color] chance to instantly kill a target",
+                        "Grants [color=#860ac9]4%[/color] chance to instantly kill a target",
                     callback = () =>
                     {
                         instantKillChance += 0.04;
@@ -146,7 +145,7 @@ namespace RA2Survivors
                                 0.25
                             );
                             Sound3DService.PlaySoundAtNode(crater, "gexp07a.wav");
-                            var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 4);
+                            var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 4.2);
                             foreach (var t in list)
                             {
                                 owner.DealDamage(t, owner.stats.damage * damageMultiplier);
