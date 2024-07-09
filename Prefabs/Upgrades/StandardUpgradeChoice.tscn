@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch2vrr2ip5o6w"]
+[gd_scene load_steps=2 format=3 uid="uid://cjiyeiy00gyf6"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeButton.cs" id="1_rf07e"]
 

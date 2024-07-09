@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cclmktow8hqcu"]
+
+[ext_resource type="Texture2D" uid="uid://dad0kyp1vxdle" path="res://Assets/UI/healthbar_fill_red.png" id="1_5gwqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uql6e"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1bhb"]
+texture = ExtResource("1_5gwqv")
+axis_stretch_horizontal = 1
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_uql6e")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_t1bhb")

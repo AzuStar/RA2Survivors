@@ -105,6 +105,8 @@ namespace RA2Survivors
                 .Instantiate<ExpOrb>();
             expOrb.expAmount = expAmount;
             expOrb.GlobalTransform = new Transform3D(Basis.Identity, position);
+			Sprite3D sprite = (Sprite3D)expOrb.FindChild("Sprite3D");
+			sprite.Frame = (int)Math.Floor(Double.Lerp(0, 12, expAmount / 100.0));
             return expOrb;
         }
 

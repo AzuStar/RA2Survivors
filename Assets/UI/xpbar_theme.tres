@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://owe4fmp6wrkg"]
+
+[ext_resource type="Texture2D" uid="uid://i6071p5irrtp" path="res://Assets/UI/xpbar.png" id="1_hydwp"]
+[ext_resource type="Texture2D" uid="uid://ds3ogv2ktkym7" path="res://Assets/UI/xpbar_fill.png" id="2_l3uc0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ue5er"]
+texture = ExtResource("1_hydwp")
+texture_margin_left = 34.0
+texture_margin_right = 45.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1bhb"]
+texture = ExtResource("2_l3uc0")
+axis_stretch_horizontal = 1
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ue5er")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_t1bhb")
