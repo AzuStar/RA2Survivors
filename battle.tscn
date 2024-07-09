@@ -17,8 +17,6 @@ script = ExtResource("1_rw6an")
 process_mode = 3
 script = ExtResource("2_d1agb")
 
-[node name="ExpBar" type="ProgressBar" parent="."]
-
 [node name="XPBarBG" type="PanelContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
