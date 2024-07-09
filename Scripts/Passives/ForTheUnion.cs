@@ -2,7 +2,6 @@ namespace RA2Survivors
 {
     public partial class ForTheUnion : Passive
     {
-        public UpgradeButtonSettings[] upgrades;
         public double attackSpeedBoost = 0.05;
         public int stackLimit = 5;
         public double damageBoost = 0.00;
@@ -20,7 +19,7 @@ namespace RA2Survivors
 
         public ForTheUnion()
         {
-            upgrades =
+            commonUpgrades =
             [
                 // new UpgradeButtonSettings
                 // {
@@ -51,6 +50,7 @@ namespace RA2Survivors
                 //     }
                 // },
             ];
+            uniqueUpgrades = [];
         }
 
         public override void _Process(double delta)

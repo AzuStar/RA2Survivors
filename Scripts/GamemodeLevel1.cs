@@ -169,6 +169,13 @@ namespace RA2Survivors
             expOrbNode.AddChild(expOrb);
         }
 
+        public static List<Enemy> GetEnemiesInRange(Vector3 location, double range)
+        {
+            return instance
+                .enemies.Where(e => e.GlobalPosition.DistanceTo(location) < range)
+                .ToList();
+        }
+
         public static List<Enemy> GetClosestEnemiesToPlayer(
             int amount,
             double minRange = double.MaxValue

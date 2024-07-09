@@ -12,7 +12,7 @@ namespace RA2Survivors
         protected RA2Sprite3D Sprite;
 
         protected List<AudioStreamPlayer3D> DyingSounds = new List<AudioStreamPlayer3D>();
-        protected List<string> DyingAnims = new List<string>();
+        public List<string> DyingAnims = new List<string>();
 
         public override void _Ready()
         {

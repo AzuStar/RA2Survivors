@@ -24,6 +24,9 @@ namespace RA2Survivors
         protected int _burstsLeft;
         protected List<Enemy> _selectedTargets;
 
+        public UpgradeButtonSettings[] commonUpgrades;
+        public UpgradeButtonSettings[] uniqueUpgrades;
+
         public Player owner;
 
         protected EWeaponState currentState = EWeaponState.Shooting;
@@ -62,13 +65,17 @@ namespace RA2Survivors
                     for (int i = _selectedTargets.Count - 1; i >= 0; i--)
                     {
                         Enemy iterator = _selectedTargets[i];
-                        if (!IsInstanceValid(iterator) || iterator.dead)
+                        if (iterator.dead)
                         {
                             _selectedTargets.Remove(iterator);
                         }
                     }
-                    if (_selectedTargets.Count > 0)
-                        Shoot(_selectedTargets);
+                    if (_selectedTargets.Count == 0)
+                    {
+                        currentState = EWeaponState.Reloading;
+                        return;
+                    }
+                    Shoot(_selectedTargets);
                     _burstTimeout = burstDelay / owner.stats.attackSpeed;
                     _burstsLeft--;
                 }

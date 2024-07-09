@@ -23,7 +23,7 @@ namespace RA2Survivors
                 UpgradeButton uButton = ResourceProvider.CreateResource<UpgradeButton>(
                     RESOURCE_PATH
                 );
-                uButton.SetText(button.name, button.description);
+                uButton.SetText(button.title, button.description);
                 uButton.Pressed += _CallBackLogic + button.callback;
                 instance.buttons.Add(uButton);
                 instance.AddChild(uButton);

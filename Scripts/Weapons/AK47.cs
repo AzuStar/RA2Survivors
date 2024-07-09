@@ -7,14 +7,85 @@ namespace RA2Survivors
 {
     public partial class AK47 : Weapon
     {
-        public override void _Ready()
+        public double explosiveShellChance = 1;
+        public double instantKillChance = 0;
+        public double critChance = 0;
+
+        public AK47()
         {
-            base._Ready();
             damageMultiplier = 0.33;
             burstCount = 3;
             burstDelay = 0.05;
             reloadSpeed = 0.95;
             multishot = 1;
+
+            commonUpgrades =
+            [
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: Extended magazine shell",
+                    description = "Increases burst count +1",
+                    callback = () =>
+                    {
+                        burstCount++;
+                    }
+                },
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: Faster reload",
+                    description = "Reload speed +10%",
+                    callback = () =>
+                    {
+                        reloadSpeed *= 0.9;
+                    }
+                },
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: Critical hit",
+                    description = "Increases chance to critically Strke by 5%",
+                    callback = () =>
+                    {
+                        critChance += 0.05;
+                    }
+                }
+            ];
+            uniqueUpgrades =
+            [
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: You are sure?",
+                    description =
+                        "Grants 11% chance to replace a burst with an explosive shell that deals damage in AoE",
+                    callback = () =>
+                    {
+                        explosiveShellChance += 0.11;
+                    }
+                },
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: Attacking!",
+                    description = "Slows down reload by 30%, but shoots +2 targets",
+                    callback = () =>
+                    {
+                        reloadSpeed *= 1.3;
+                        multishot += 2;
+                    }
+                },
+                new UpgradeButtonSettings
+                {
+                    title = "AK47: Radiation bullets",
+                    description = "Grants 4% chance to instantly kill a target",
+                    callback = () =>
+                    {
+                        instantKillChance += 0.04;
+                    }
+                }
+            ];
+        }
+
+        public override void _Ready()
+        {
+            base._Ready();
         }
 
         public override void _Process(double delta)
@@ -24,16 +95,48 @@ namespace RA2Survivors
 
         public override void Shoot(List<Enemy> targets)
         {
+            if (_burstsLeft == burstCount && GD.Randf() < explosiveShellChance)
+            {
+                foreach (var t in targets)
+                {
+                    ExplosiveShell shell = ResourceProvider.CreateResource<ExplosiveShell>(
+                        "Projectiles/ExplosiveShell.tscn"
+                    );
+                    shell.targetPosition = t.GlobalPosition;
+                    shell.startPosition = owner.GlobalPosition;
+                    shell.callback = () =>
+                    {
+                        var list = GamemodeLevel1.GetEnemiesInRange(shell.GlobalPosition, 2);
+                        foreach (var t in list)
+                        {
+                            owner.DealDamage(t, owner.stats.damage * damageMultiplier);
+                        }
+                    };
+                    AddChild(shell);
+                }
+                currentState = EWeaponState.Reloading;
+                return;
+            }
+            foreach (var t in targets)
+            {
+                if (GD.Randf() < instantKillChance)
+                {
+                    // make target melt from radiation
+                    // t.DyingAnims = [];
+                    t.Die();
+                }
+                else
+                {
+                    owner.DealDamage(t, owner.stats.damage * damageMultiplier);
+                }
+            }
+
             ((AudioStreamPlayer3D)owner.FindChild("iconatta")).Play();
             owner.Sprite.PlayAnimWithDir(
                 "fire",
                 owner.GlobalPosition.DirectionTo(targets.First().GlobalPosition),
                 true
             );
-            foreach (var t in targets)
-            {
-                owner.DealDamage(t, owner.stats.damage * damageMultiplier);
-            }
         }
 
         public override List<Enemy> GetTargets()
