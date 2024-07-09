@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cb5gmk7e03qj2" path="res://Assets/Effects/crater02.png" id="1_30306"]
 
 [node name="Crater" type="Sprite3D"]
-transform = Transform3D(3, 0, 0, 0, 0.261467, 2.98858, 0, -2.98858, 0.261467, 0, 1, 0)
+transform = Transform3D(5, 0, 0, 0, 0.435779, 4.98097, 0, -4.98097, 0.435779, 0, 1, 0)
+render_priority = -1
 texture = ExtResource("1_30306")

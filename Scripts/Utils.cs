@@ -23,7 +23,7 @@ namespace RA2Survivors
                         tim.QueueFree();
                     }
                 ) + action;
-            GamemodeLevel1.instance.GetTree().Root.AddChild(tim);
+            GamemodeLevel1.instance.AddChild(tim);
         }
     }
 }

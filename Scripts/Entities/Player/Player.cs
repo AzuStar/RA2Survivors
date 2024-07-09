@@ -165,7 +165,13 @@ namespace RA2Survivors
                     .Take(3)
                     .ToArray();
 
-                UpgradeSelector.CreateSelection(upgradesToDisplay);
+                UpgradeSelector.CreateSelection(
+                    upgradesToDisplay,
+                    (upgradeSettings) =>
+                    {
+                        uniqueUpgrades.Remove(upgradeSettings);
+                    }
+                );
                 uniqueUpgradesToSelect--;
             }
         }

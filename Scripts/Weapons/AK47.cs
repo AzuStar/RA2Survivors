@@ -138,7 +138,7 @@ namespace RA2Survivors
                             );
                             GetTree().Root.AddChild(crater);
                             crater.GlobalPosition = shell.GlobalPosition;
-                            new LifetimedResource(3).StartLifetime(crater);
+                            new LifetimedResource(10).StartLifetime(crater);
                             RA2AnimatedSprite3D.PlaySpriteScene(
                                 shell.GlobalPosition,
                                 "Effects/ExploSmall1.tscn",

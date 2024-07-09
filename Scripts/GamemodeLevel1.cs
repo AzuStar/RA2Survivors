@@ -136,6 +136,19 @@ namespace RA2Survivors
         [
             new SpawnEventConfig
             {
+                spawnTime = 20,
+                enemyConfig =
+                [
+                    new SpawnEventEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        enemyCount = 5,
+                        qudrant = Qudrant.Random
+                    }
+                ]
+            },
+            new SpawnEventConfig
+            {
                 spawnTime = 60,
                 enemyConfig =
                 [
@@ -246,6 +259,7 @@ namespace RA2Survivors
             AddChild(player);
             waveQueue = new Queue<WaveConfig>(waveConfigs);
             NextWave();
+            RegisterSpawnEvents();
         }
 
         private void RegisterSpawnEvents()
@@ -331,10 +345,9 @@ namespace RA2Survivors
 
         public void SpawnCrate(Vector3 position)
         {
-            position.Y = 1;
             UpgradeCrate crate = ResourceProvider.CreateResource<UpgradeCrate>("UpgradeCrate.tscn");
-            crate.GlobalTransform = new Transform3D(Basis.Identity, position);
             pickupsNode.AddChild(crate);
+            crate.GlobalPosition = position;
         }
 
         public static List<Enemy> GetEnemiesInRange(Vector3 location, double range)

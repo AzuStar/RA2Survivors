@@ -208,7 +208,6 @@ namespace RA2Survivors
             {
                 Sprite.PlayAnim(DyingAnims[GD.RandRange(0, DyingAnims.Count - 1)]);
             }
-            GamemodeLevel1.instance.SpawnCrate(GlobalPosition);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -15,7 +16,10 @@ namespace RA2Survivors
             instance = this;
         }
 
-        public static void CreateSelection(params UpgradeButtonSettings[] createdButtons)
+        public static void CreateSelection(
+            UpgradeButtonSettings[] createdButtons,
+            Action<UpgradeButtonSettings> callbackHandler = null
+        )
         {
             PauseService.PauseGame();
             foreach (var button in createdButtons)
@@ -25,6 +29,10 @@ namespace RA2Survivors
                 );
                 uButton.SetText(button.title, button.description);
                 uButton.Pressed += _CallBackLogic + button.callback;
+                if (callbackHandler != null)
+                {
+                    uButton.Pressed += () => callbackHandler(button);
+                }
                 instance.buttons.Add(uButton);
                 instance.AddChild(uButton);
             }

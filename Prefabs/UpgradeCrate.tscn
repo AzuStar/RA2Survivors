@@ -4,6 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/UpgradeCrate.cs" id="2_0png5"]
 
 [node name="Crater" type="Sprite3D"]
-transform = Transform3D(3, 0, 0, 0, 0.261467, 2.98858, 0, -2.98858, 0.261467, 0, 1, 0)
+transform = Transform3D(5, 0, 0, 0, 0.435779, 4.98097, 0, -4.98097, 0.435779, 0, 1, 0)
 texture = ExtResource("1_f2dj6")
 script = ExtResource("2_0png5")
