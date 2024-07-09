@@ -77,12 +77,12 @@ namespace RA2Survivors
         public static EEntityType SelectedCharacter = EEntityType.Conscript;
 
         #region Exp Orbs
-        private const string EXP_ORB_RESOURCE_PATH = RESOURCE_MASTER_PATH + "/ExpOrb.tscn";
+        private const string EXP_ORB_RESOURCE_PATH = RESOURCE_MASTER_PATH + "ExpOrbs/";
         private static ExpOrbConfig[] expOrbConfigs = new ExpOrbConfig[]
         {
-            new ExpOrbConfig { expThreshold = 50, },
-            new ExpOrbConfig { expThreshold = 10, },
-            new ExpOrbConfig { expThreshold = 0, },
+            new ExpOrbConfig { expThreshold = 50, resourcePath = "ExpOrbBig.tscn" },
+            new ExpOrbConfig { expThreshold = 10, resourcePath = "ExpOrbMedium.tscn" },
+            new ExpOrbConfig { expThreshold = 0, resourcePath = "ExpOrbTiny.tscn" },
         };
 
         public static ExpOrb CreateExpOrb(Vector3 position, double expAmount)
@@ -101,18 +101,17 @@ namespace RA2Survivors
                 config = expOrbConfigs[expOrbConfigs.Length - 1];
             }
             ExpOrb expOrb = ResourceLoader
-                .Load<PackedScene>(EXP_ORB_RESOURCE_PATH)
+                .Load<PackedScene>(EXP_ORB_RESOURCE_PATH + config.resourcePath)
                 .Instantiate<ExpOrb>();
             expOrb.expAmount = expAmount;
             expOrb.GlobalTransform = new Transform3D(Basis.Identity, position);
-			Sprite3D sprite = (Sprite3D)expOrb.FindChild("Sprite3D");
-			sprite.Frame = (int)Math.Floor(Double.Lerp(0, 12, expAmount / 100.0));
             return expOrb;
         }
 
         private class ExpOrbConfig
         {
             public double expThreshold;
+            public string resourcePath;
         }
 
         #endregion

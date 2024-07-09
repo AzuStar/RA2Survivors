@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpf55gg5d8us0"]
+
+[ext_resource type="Script" path="res://Scripts/ExpOrb.cs" id="1_8t1xd"]
+[ext_resource type="Texture2D" uid="uid://n8b3puugbs2j" path="res://Assets/Pickups/expGems.png" id="2_q015c"]
+
+[node name="ExpOrb" type="Node3D"]
+script = ExtResource("1_8t1xd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(18, 0, 0, 0, 1.56881, 17.9315, 0, -17.9315, 1.56881, 0, 0, 0)
+texture = ExtResource("2_q015c")
+vframes = 3
+frame = 1

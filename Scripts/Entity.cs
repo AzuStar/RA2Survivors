@@ -20,6 +20,7 @@ namespace RA2Survivors
                     colliders.Add((CollisionShape3D)c);
                 }
             }
+            stats.health = stats.maxHealth;
         }
 
         public override void _Process(double delta)
