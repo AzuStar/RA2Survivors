@@ -19,6 +19,9 @@ namespace RA2Survivors
         public Vector3 movementVelocity = Vector3.Zero;
         public RA2Sprite3D Sprite;
 
+        private ulong LastQuoteTime = 0;
+        private static ulong QuoteIntervalMsec = 15000;
+
         public void SetExp(double amount)
         {
             stats.currentExp = amount;
@@ -111,6 +114,21 @@ namespace RA2Survivors
         {
             base.TakeDamage(source, damage);
             HealthBar.SetHealth(stats.health, stats.maxHealth);
+            ulong currentTime = Time.GetTicksMsec();
+            if (currentTime > LastQuoteTime + QuoteIntervalMsec)
+            {
+                double healthValue = stats.health / stats.maxHealth;
+                if (healthValue < 0.2)
+                {
+                    Sound3DService.PlaySoundAtNode(this, "iconfea.wav");
+                    LastQuoteTime = currentTime;
+                }
+                else if (healthValue < 0.5)
+                {
+                    Sound3DService.PlaySoundAtNode(this, "iconfeb.wav");
+                    LastQuoteTime = currentTime;
+                } 
+            }
         }
 
         public override void _Process(double delta)

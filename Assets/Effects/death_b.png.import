@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3fswbx5vgu3f"
-path.s3tc="res://.godot/imported/nukedie.png-9f224f4b1cd1f91bb2688b2589d4113c.s3tc.ctex"
+uid="uid://d037l3xckl3gb"
+path.s3tc="res://.godot/imported/death_b.png-4d5423cf868dedbbd69c126f38cddbb2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Effects/nukedie.png"
-dest_files=["res://.godot/imported/nukedie.png-9f224f4b1cd1f91bb2688b2589d4113c.s3tc.ctex"]
+source_file="res://Assets/Effects/death_b.png"
+dest_files=["res://.godot/imported/death_b.png-4d5423cf868dedbbd69c126f38cddbb2.s3tc.ctex"]
 
 [params]
 

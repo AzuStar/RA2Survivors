@@ -22,7 +22,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 5,
+                        minEnemies = 100,
                         chancePastMin = 0.2f
                     },
                 ],

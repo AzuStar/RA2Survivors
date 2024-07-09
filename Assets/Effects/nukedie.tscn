@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvpdyqt658f63"]
+
+[ext_resource type="Texture2D" uid="uid://c3fswbx5vgu3f" path="res://Assets/Effects/nukedie.png" id="1_xw0ak"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_dixj4"]
+
+[node name="Nukedie" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 0, 0)
+pixel_size = 0.1
+render_priority = -1
+texture = ExtResource("1_xw0ak")
+hframes = 4
+vframes = 15
+script = ExtResource("2_dixj4")

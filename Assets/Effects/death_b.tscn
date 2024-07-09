@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ravxby2r7egp"]
+
+[ext_resource type="Texture2D" uid="uid://d037l3xckl3gb" path="res://Assets/Effects/death_b.png" id="1_5grew"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_tr42q"]
+
+[node name="DeathB" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 0, 0)
+render_priority = -1
+texture = ExtResource("1_5grew")
+hframes = 4
+script = ExtResource("2_tr42q")
