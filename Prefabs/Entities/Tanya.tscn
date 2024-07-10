@@ -11,7 +11,7 @@
 radius = 1.0
 
 [node name="RigidBody3D" type="RigidBody3D"]
-mass = 2.0
+mass = 10.0
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
