@@ -292,14 +292,13 @@ namespace RA2Survivors
 
                 while(!IsSpawnPositionValid(enemies[0]))
                 {
-                    // GD.Print("RESPAWNING CLUSTER");
                     enemies[0].GlobalPosition = SpawnerService.SpawnRangeOffset(
                         instance.player.GlobalPosition
                     );
                 }
                 for (int i = 1; i < enemies.Count; i++)
                 {
-                    enemies[i].Transform = enemies[0].Transform;
+                    enemies[i].GlobalPosition = enemies[0].GlobalPosition;
                 }
             }
         }
@@ -357,7 +356,6 @@ namespace RA2Survivors
             enemyNode.AddChild(enemy);
             while(!IsSpawnPositionValid(enemy))
             {
-                // GD.Print("RESPAWNING");
                 enemy.GlobalPosition = SpawnerService.SpawnRangeOffset(
                     instance.player.GlobalPosition
                 );
