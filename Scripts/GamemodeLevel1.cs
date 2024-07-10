@@ -289,6 +289,18 @@ namespace RA2Survivors
                 );
                 foreach (Enemy enemy in enemies)
                     enemyNode.AddChild(enemy);
+
+                while(!IsSpawnPositionValid(enemies[0]))
+                {
+                    // GD.Print("RESPAWNING CLUSTER");
+                    enemies[0].GlobalPosition = SpawnerService.SpawnRangeOffset(
+                        instance.player.GlobalPosition
+                    );
+                }
+                for (int i = 1; i < enemies.Count; i++)
+                {
+                    enemies[i].Transform = enemies[0].Transform;
+                }
             }
         }
 
@@ -343,6 +355,30 @@ namespace RA2Survivors
         {
             Enemy enemy = SpawnerService.SpawnEnemy(type, player.GlobalTransform.Origin);
             enemyNode.AddChild(enemy);
+            while(!IsSpawnPositionValid(enemy))
+            {
+                // GD.Print("RESPAWNING");
+                enemy.GlobalPosition = SpawnerService.SpawnRangeOffset(
+                    instance.player.GlobalPosition
+                );
+            }
+        }
+
+        private bool IsSpawnPositionValid(Enemy enemy)
+        {
+            var spaceState = instance.player.GetWorld3D().DirectSpaceState;
+            var query = PhysicsRayQueryParameters3D.Create(new Vector3(enemy.GlobalPosition.X,100,enemy.GlobalPosition.Z), new Vector3(enemy.GlobalPosition.X, -10, enemy.GlobalPosition.Z));
+            var result = spaceState.IntersectRay(query);
+            if (result.Count > 0)
+            {
+                return !result["collider"].AsString().StartsWith("Clip");
+            }
+            return true;
+        }
+
+        private void FixSpawnPosition(Enemy enemy)
+        {
+
         }
 
         public void SpawnExpOrb(Vector3 position, double expAmount)
