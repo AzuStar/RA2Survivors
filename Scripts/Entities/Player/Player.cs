@@ -22,6 +22,7 @@ namespace RA2Survivors
 
         private ulong LastQuoteTime = 0;
         private static ulong QuoteIntervalMsec = 15000;
+        protected List<AudioStreamPlayer3D> DyingSounds = new List<AudioStreamPlayer3D>();
 
         public void SetExp(double amount)
         {
@@ -121,12 +122,40 @@ namespace RA2Survivors
                     }
                 }
             );
+
+            Node dyingsounds = FindChild("dyingsounds");
+            if (dyingsounds != null)
+            {
+                foreach (var s in dyingsounds.GetChildren())
+                {
+                    DyingSounds.Add((AudioStreamPlayer3D)s);
+                }
+            }
         }
 
         public override void TakeDamage(Entity source, double damage)
         {
-            base.TakeDamage(source, damage);
+            if (dead)
+            {
+                return;
+            }
+            // Do not destruct on death - handle manually
+            stats.health -= damage;
             HealthBar.SetHealth(stats.health, stats.maxHealth);
+            if (stats.health <= 0)
+            {
+                dead = true;
+                Freeze = true;
+                if (DyingSounds.Count > 0)
+                {
+                    DyingSounds[GD.RandRange(0, DyingSounds.Count - 1)].Play();
+                }
+                ((Sprite3D)FindChild("HealthBar3D")).Hide();
+                Sprite.PlayAnim("death", true);
+                GamemodeLevel1.instance.HandleDefeat();
+                return;
+            }
+
             ulong currentTime = Time.GetTicksMsec();
             if (currentTime > LastQuoteTime + QuoteIntervalMsec)
             {
@@ -212,6 +241,10 @@ namespace RA2Survivors
 
         public override void _IntegrateForces(PhysicsDirectBodyState3D state)
         {
+            if (dead)
+            {
+                return;
+            }
             // Handle movement input
             Vector3 direction = Vector3.Zero;
 

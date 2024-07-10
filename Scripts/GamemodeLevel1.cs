@@ -289,7 +289,7 @@ namespace RA2Survivors
             currentWave = null;
             if (waveQueue.Count == 0)
             {
-                GD.Print("Victory!");
+                HandleVictory();
                 return;
             }
             currentWave = waveQueue.Dequeue();
@@ -369,6 +369,23 @@ namespace RA2Survivors
                 .Where(e => e.distanceToPlayer < minRange)
                 .Take(amount)
                 .ToList();
+        }
+
+        public void HandleDefeat()
+        {
+            Sound3DService.PlaySoundAtNode(player, "csof023.wav");
+            Control scene = ResourceLoader.Load<PackedScene>("Prefabs/UI/DefeatScene.tscn").Instantiate<Control>();
+            // force to bottom in case level up pops up...
+            GetTree().Root.AddChild(scene);
+            GetTree().Root.MoveChild(scene, 0);
+        }
+
+        public void HandleVictory()
+        {
+            Sound3DService.PlaySoundAtNode(player, "csof022.wav");
+            Control scene = ResourceLoader.Load<PackedScene>("Prefabs/UI/VictoryScene.tscn").Instantiate<Control>();
+            GetTree().Root.AddChild(scene);
+            GetTree().Root.MoveChild(scene, 0);
         }
     }
 }

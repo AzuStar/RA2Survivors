@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RASurvivors", "RASurvivors.csproj", "{F0648AC6-69CB-48B1-86C6-B815119418CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA2Survivors", "RA2Survivors.csproj", "{F0648AC6-69CB-48B1-86C6-B815119418CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

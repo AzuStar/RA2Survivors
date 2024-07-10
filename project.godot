@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="RASurvivors"
+config/name="RA2Survivors"
 run/main_scene="res://battle.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="RASurvivors"
+project/assembly_name="RA2Survivors"
 
 [input]
 

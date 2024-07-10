@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://minxhmunuk1s"]
+
+[ext_resource type="Texture2D" uid="uid://x4852t04iusy" path="res://Assets/Effects/twnk1.png" id="1_3wuok"]
+[ext_resource type="Script" path="res://Scripts/RA2AnimatedSprite3D.cs" id="2_flkks"]
+
+[node name="Twnk1" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0.009, 0, -0.132799)
+render_priority = 2
+texture = ExtResource("1_3wuok")
+hframes = 4
+vframes = 2
+script = ExtResource("2_flkks")

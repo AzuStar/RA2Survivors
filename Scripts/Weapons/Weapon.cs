@@ -44,6 +44,10 @@ namespace RA2Survivors
 
         public override void _Process(double delta)
         {
+            if (owner.dead)
+            {
+                return;
+            }
             switch (currentState)
             {
                 case EWeaponState.Shooting:
