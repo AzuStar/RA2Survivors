@@ -1,20 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqs7r5utsw7my"]
+[gd_scene load_steps=8 format=3 uid="uid://bqs7r5utsw7my"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Conscript.cs" id="1_k31pl"]
 [ext_resource type="Texture2D" uid="uid://c8q57hodnui4p" path="res://Assets/Units/cons.png" id="2_b1nn0"]
 [ext_resource type="Script" path="res://Scripts/RA2Sprite3D.cs" id="3_72d8b"]
-[ext_resource type="AudioStream" uid="uid://dl741pf53ofcx" path="res://Assets/Audio/iconatta.wav" id="4_pitwl"]
-[ext_resource type="AudioStream" uid="uid://0r7q2by68ik8" path="res://Assets/Audio/iconattb.wav" id="5_saidf"]
-[ext_resource type="AudioStream" uid="uid://big2onkqcq7gc" path="res://Assets/Audio/iconattc.wav" id="6_xvtvv"]
-[ext_resource type="AudioStream" uid="uid://bei3efcmibxhb" path="res://Assets/Audio/iconattd.wav" id="7_1raxm"]
-[ext_resource type="AudioStream" uid="uid://ci7fe6er74vjn" path="res://Assets/Audio/iconatte.wav" id="8_givyb"]
 [ext_resource type="PackedScene" uid="uid://bu5vkfvb21nl8" path="res://Assets/UI/HealthBar.tscn" id="9_aetcn"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="10_bxe55"]
-[ext_resource type="AudioStream" uid="uid://cojybgftbdg38" path="res://Assets/Audio/igidia.wav" id="11_65o0h"]
-[ext_resource type="AudioStream" uid="uid://d1i4i5k4cfnda" path="res://Assets/Audio/igidib.wav" id="12_5wjgr"]
-[ext_resource type="AudioStream" uid="uid://ci4gt458perkh" path="res://Assets/Audio/igidic.wav" id="13_0misp"]
-[ext_resource type="AudioStream" uid="uid://ccdtdym2bxmkf" path="res://Assets/Audio/igidid.wav" id="14_es3o1"]
-[ext_resource type="AudioStream" uid="uid://c5xsu0qw4ux8s" path="res://Assets/Audio/igidie.wav" id="15_3y58a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r0a6y"]
 radius = 0.9
@@ -40,6 +30,10 @@ projection = 1
 current = true
 size = 60.0
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+current = true
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, -0.9, 0)
 pixel_size = 0.1
@@ -47,21 +41,6 @@ texture = ExtResource("2_b1nn0")
 hframes = 12
 vframes = 12
 script = ExtResource("3_72d8b")
-
-[node name="iconatta" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_pitwl")
-
-[node name="iconattb" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_saidf")
-
-[node name="iconattc" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_xvtvv")
-
-[node name="iconattd" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("7_1raxm")
-
-[node name="iconatte" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("8_givyb")
 
 [node name="HealthBar3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 1.25857, -2.52138)
@@ -77,20 +56,3 @@ size = Vector2i(144, 16)
 
 [node name="HealthBar" parent="SubViewport" instance=ExtResource("9_aetcn")]
 script = ExtResource("10_bxe55")
-
-[node name="dyingsounds" type="Node" parent="."]
-
-[node name="a" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("11_65o0h")
-
-[node name="b" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("12_5wjgr")
-
-[node name="c" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("13_0misp")
-
-[node name="d" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("14_es3o1")
-
-[node name="e" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("15_3y58a")

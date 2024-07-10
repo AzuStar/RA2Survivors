@@ -12,7 +12,6 @@ namespace RA2Survivors
         private float _pushMass;
         protected RA2Sprite3D Sprite;
 
-        protected List<AudioStreamPlayer3D> DyingSounds = new List<AudioStreamPlayer3D>();
         public List<string> DyingAnims = new List<string>();
 
         public override void _Ready()
@@ -124,15 +123,6 @@ namespace RA2Survivors
 
             DyingAnims.Add("death");
             DyingAnims.Add("death2");
-
-            Node dyingsounds = FindChild("dyingsounds");
-            if (dyingsounds != null)
-            {
-                foreach (var s in dyingsounds.GetChildren())
-                {
-                    DyingSounds.Add((AudioStreamPlayer3D)s);
-                }
-            }
         }
 
         public override void _PhysicsProcess(double delta)
@@ -200,9 +190,9 @@ namespace RA2Survivors
         public override void OnDying()
         {
             GamemodeLevel1.instance.SpawnExpOrb(GlobalPosition, stats.expDropped);
-            if (DyingSounds.Count > 0)
+            if (ResourceProvider.EntityDyingSounds[associatedEntity].Count > 0)
             {
-                DyingSounds[GD.RandRange(0, DyingSounds.Count - 1)].Play();
+                Sound3DService.PlaySoundAtNode(this, ResourceProvider.EntityDyingSounds[associatedEntity][GD.RandRange(0, ResourceProvider.EntityDyingSounds[associatedEntity].Count - 1)]);
             }
             if (DyingAnims.Count > 0)
             {

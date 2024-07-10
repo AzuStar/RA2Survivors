@@ -13,6 +13,8 @@ namespace RA2Survivors
         [Export]
         public Node pickupsNode;
         public static GamemodeLevel1 instance { get; private set; }
+
+        public bool GameEnded = false;
         public WaveConfig[] waveConfigs =
         {
             // Wave 0000 - 0030
@@ -23,12 +25,13 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 5,
+                        minEnemies = 100,
                         chancePastMin = 0.2f
                     },
                 ],
                 waveDuration = 30,
-                waveMusic = "BullyKit.mp3"
+                waveMusic = "BullyKit.mp3",
+                waveName = "Wave 1"
             },
             // Wave 0030 - 0100
             new WaveConfig
@@ -48,88 +51,93 @@ namespace RA2Survivors
                         chancePastMin = 0.1f
                     },
                 ],
-                waveDuration = 30
+                waveDuration = 30,
+                waveName = "Wave 2"
             },
-            // Wave 0100 - 0130
-            new WaveConfig
-            {
-                enemyConfig =
-                [
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.GI,
-                        minEnemies = 10,
-                        chancePastMin = 0.4f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.AttackDog,
-                        minEnemies = 2,
-                        chancePastMin = 0.2f
-                    },
-                ],
-                waveDuration = 30
-            },
-            // Wave 0130 - 0300
-            new WaveConfig
-            {
-                enemyConfig =
-                [
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.GI,
-                        minEnemies = 15,
-                        chancePastMin = 0.4f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.AttackDog,
-                        minEnemies = 2,
-                        chancePastMin = 0.2f
-                    }
-                ],
-                waveDuration = 90
-            },
-            // Wave 0300 - 0400
-            new WaveConfig
-            {
-                enemyConfig =
-                [
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Seal,
-                        minEnemies = 10,
-                        chancePastMin = 0.2f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.AttackDog,
-                        minEnemies = 2,
-                        chancePastMin = 0.2f
-                    }
-                ],
-                waveDuration = 60
-            },
-            // Wave 0400 - 0500
-            new WaveConfig
-            {
-                enemyConfig =
-                [
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.Seal,
-                        minEnemies = 10,
-                        chancePastMin = 0.4f
-                    },
-                    new WaveEnemyConfig
-                    {
-                        enemyType = EEntityType.AttackDog,
-                        minEnemies = 2,
-                        chancePastMin = 0.3f
-                    }
-                ],
-                waveDuration = 60
-            },
+            // // Wave 0100 - 0130
+            // new WaveConfig
+            // {
+            //     enemyConfig =
+            //     [
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.GI,
+            //             minEnemies = 10,
+            //             chancePastMin = 0.4f
+            //         },
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.AttackDog,
+            //             minEnemies = 2,
+            //             chancePastMin = 0.2f
+            //         },
+            //     ],
+            //     waveDuration = 30,
+            //     waveName = "Wave 3"
+            // },
+            // // Wave 0130 - 0300
+            // new WaveConfig
+            // {
+            //     enemyConfig =
+            //     [
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.GI,
+            //             minEnemies = 15,
+            //             chancePastMin = 0.4f
+            //         },
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.AttackDog,
+            //             minEnemies = 2,
+            //             chancePastMin = 0.2f
+            //         }
+            //     ],
+            //     waveDuration = 90,
+            //     waveName = "Wave 4"
+            // },
+            // // Wave 0300 - 0400
+            // new WaveConfig
+            // {
+            //     enemyConfig =
+            //     [
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.Seal,
+            //             minEnemies = 10,
+            //             chancePastMin = 0.2f
+            //         },
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.AttackDog,
+            //             minEnemies = 2,
+            //             chancePastMin = 0.2f
+            //         }
+            //     ],
+            //     waveDuration = 60,
+            //     waveName = "Wave 5"
+            // },
+            // // Wave 0400 - 0500
+            // new WaveConfig
+            // {
+            //     enemyConfig =
+            //     [
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.Seal,
+            //             minEnemies = 10,
+            //             chancePastMin = 0.4f
+            //         },
+            //         new WaveEnemyConfig
+            //         {
+            //             enemyType = EEntityType.AttackDog,
+            //             minEnemies = 2,
+            //             chancePastMin = 0.3f
+            //         }
+            //     ],
+            //     waveDuration = 60,
+            //     waveName = "Final Wave"
+            // },
         };
 
         public SpawnEventConfig[] spawnEvents =
@@ -373,19 +381,24 @@ namespace RA2Survivors
 
         public void HandleDefeat()
         {
+            if (GameEnded)
+            {
+                return;
+            }
+            GameEnded = true;
             Sound3DService.PlaySoundAtNode(player, "csof023.wav");
-            Control scene = ResourceLoader.Load<PackedScene>("Prefabs/UI/DefeatScene.tscn").Instantiate<Control>();
-            // force to bottom in case level up pops up...
-            GetTree().Root.AddChild(scene);
-            GetTree().Root.MoveChild(scene, 0);
+            GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("Prefabs/UI/DefeatScene.tscn").Instantiate<Control>());
         }
 
         public void HandleVictory()
         {
+            if (GameEnded)
+            {
+                return;
+            }
+            GameEnded = true;
             Sound3DService.PlaySoundAtNode(player, "csof022.wav");
-            Control scene = ResourceLoader.Load<PackedScene>("Prefabs/UI/VictoryScene.tscn").Instantiate<Control>();
-            GetTree().Root.AddChild(scene);
-            GetTree().Root.MoveChild(scene, 0);
+            GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("Prefabs/UI/VictoryScene.tscn").Instantiate<Control>());
         }
     }
 }

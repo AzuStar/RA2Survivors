@@ -21,6 +21,7 @@ namespace RA2Survivors
             Action<UpgradeButtonSettings> callbackHandler = null
         )
         {
+            Sound3DService.PlaySoundAtNode(GamemodeLevel1.instance.player, "gupgrad1.wav", true);
             PauseService.PauseGame();
             foreach (var button in createdButtons)
             {

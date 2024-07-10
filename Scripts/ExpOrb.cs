@@ -19,7 +19,11 @@ namespace RA2Survivors
                 double distance = GlobalPosition.DistanceTo(magnetOffsetPosition);
                 if (distance < 2)
                 {
-                    magnetTarget.AddExp(expAmount);
+                    // prevent lvl up popup on end screen
+                    if (!magnetTarget.dead)
+                    {
+                        magnetTarget.AddExp(expAmount);
+                    }
                     QueueFree();
                 }
                 else

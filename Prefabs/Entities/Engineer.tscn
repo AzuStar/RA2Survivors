@@ -28,17 +28,3 @@ texture = ExtResource("2_ykwxr")
 hframes = 12
 vframes = 8
 script = ExtResource("3_5sq70")
-
-[node name="dyingsounds" type="Node" parent="."]
-
-[node name="ienadia" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("4_5w8hj")
-
-[node name="ienadib" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("5_j2lcj")
-
-[node name="ienadic" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("6_j4grx")
-
-[node name="ienadid" type="AudioStreamPlayer3D" parent="dyingsounds"]
-stream = ExtResource("7_j3bgj")

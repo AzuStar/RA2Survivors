@@ -15,13 +15,16 @@ namespace RA2Survivors
         //     sound.Play();
         // }
 
-        public static void PlaySoundAtNode(Node node, string soundName, bool ignorePause = false)
+        public static void PlaySoundAtNode(Node3D node, string soundName, bool ignorePause = false)
         {
-            AudioStreamPlayer3D sound = new AudioStreamPlayer3D();
-            sound.Stream = ResourceLoader.Load<AudioStream>(MASTER_ASSET_PATH + soundName);
+            AudioStreamPlayer3D sound = new AudioStreamPlayer3D
+            {
+                Stream = ResourceLoader.Load<AudioStream>(MASTER_ASSET_PATH + soundName)
+            };
+            GamemodeLevel1.instance.GetTree().Root.AddChild(sound);
             if (ignorePause)
                 sound.ProcessMode = Node.ProcessModeEnum.Always;
-            node.AddChild(sound);
+            sound.GlobalTransform = node.GlobalTransform;
             sound.Finished += () => sound.QueueFree();
             sound.Play();
         }

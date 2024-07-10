@@ -22,7 +22,6 @@ namespace RA2Survivors
 
         private ulong LastQuoteTime = 0;
         private static ulong QuoteIntervalMsec = 15000;
-        protected List<AudioStreamPlayer3D> DyingSounds = new List<AudioStreamPlayer3D>();
 
         public void SetExp(double amount)
         {
@@ -122,33 +121,25 @@ namespace RA2Survivors
                     }
                 }
             );
-
-            Node dyingsounds = FindChild("dyingsounds");
-            if (dyingsounds != null)
-            {
-                foreach (var s in dyingsounds.GetChildren())
-                {
-                    DyingSounds.Add((AudioStreamPlayer3D)s);
-                }
-            }
         }
 
         public override void TakeDamage(Entity source, double damage)
         {
+            // Do not destruct on death - handle manually
+            // DamageNumber3D.SpawnDamageNumber(this, damage, TakeDamageColor); // can't be done
             if (dead)
             {
                 return;
             }
-            // Do not destruct on death - handle manually
             stats.health -= damage;
             HealthBar.SetHealth(stats.health, stats.maxHealth);
             if (stats.health <= 0)
             {
                 dead = true;
                 Freeze = true;
-                if (DyingSounds.Count > 0)
+                if (ResourceProvider.EntityDyingSounds[associatedEntity].Count > 0)
                 {
-                    DyingSounds[GD.RandRange(0, DyingSounds.Count - 1)].Play();
+                    Sound3DService.PlaySoundAtNode(this, ResourceProvider.EntityDyingSounds[associatedEntity][GD.RandRange(0, ResourceProvider.EntityDyingSounds[associatedEntity].Count - 1)]);
                 }
                 ((Sprite3D)FindChild("HealthBar3D")).Hide();
                 Sprite.PlayAnim("death", true);
@@ -157,7 +148,7 @@ namespace RA2Survivors
             }
 
             ulong currentTime = Time.GetTicksMsec();
-            if (currentTime > LastQuoteTime + QuoteIntervalMsec)
+            if (LastQuoteTime == 0 || currentTime > LastQuoteTime + QuoteIntervalMsec)
             {
                 double healthValue = stats.health / stats.maxHealth;
                 if (healthValue < 0.2)
@@ -176,6 +167,10 @@ namespace RA2Survivors
         public override void _Process(double delta)
         {
             base._Process(delta);
+            if (GamemodeLevel1.instance.GameEnded)
+            {
+                return;
+            }
             if (commonUpgradesToSelect > 0)
             {
                 // randomize order and select the first 3

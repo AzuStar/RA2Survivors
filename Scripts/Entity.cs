@@ -62,6 +62,7 @@ namespace RA2Survivors
 
         public virtual void TakeDamage(Entity source, double damage)
         {
+            DamageNumber3D.SpawnDamageNumber(this, damage);
             stats.health -= damage;
             if (stats.health <= 0)
             {

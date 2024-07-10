@@ -48,6 +48,38 @@ namespace RA2Survivors
             [EEntityType.Tanya] = "Tanya"
         };
 
+        public static readonly Dictionary<EEntityType, List<string>> EntityDyingSounds = new Dictionary<
+            EEntityType,
+            List<string>
+        >()
+        {
+            [EEntityType.Conscript] = new List<string>() { 
+                "icondia.wav", "icondib.wav", "icondic.wav", "icondid.wav", "icondie.wav"
+            },
+            [EEntityType.GI] = new List<string>() { 
+                "igidia.wav", "igidib.wav", "igidic.wav", "igidid.wav", "igidie.wav"
+            },
+            [EEntityType.GGI] = new List<string>() { 
+                "iggidia.wav", "iggidib.wav", "iggidic.wav", "iggidid.wav", "iggidie.wav"
+            },
+            [EEntityType.Sniper] = new List<string>() { 
+                "isnidia.wav", "isnidib.wav", "isnidic.wav"
+            },
+            [EEntityType.Seal] = new List<string>() { 
+                "iseadia.wav", "iseadib.wav", "iseadic.wav"
+            },
+            [EEntityType.Spy] = new List<string>() { 
+            },
+            [EEntityType.Engineer] =new List<string>() { 
+            },
+            [EEntityType.AttackDog] = new List<string>() { 
+                "idogdiea.wav"
+            },
+            [EEntityType.Tanya] = new List<string>() { 
+                "itandia.wav", "itandib.wav", "itandic.wav"
+            }
+        };
+
         public static T CreateEntity<T>(string entityName)
             where T : RigidBody3D
         {
