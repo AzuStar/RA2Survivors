@@ -15,6 +15,7 @@ namespace RA2Survivors
         public static GamemodeLevel1 instance { get; private set; }
 
         public bool GameEnded = false;
+        private Enemy LastBoss = null;
         public WaveConfig[] waveConfigs =
         {
             // Wave 0000 - 0030
@@ -209,7 +210,7 @@ namespace RA2Survivors
             },
             new SpawnEventConfig
             {
-                spawnTime = 300,
+                spawnTime = 299,
                 enemyConfig =
                 [
                     new SpawnEventEnemyConfig
@@ -255,6 +256,10 @@ namespace RA2Survivors
                     NextWave();
                     waveTimer = 0;
                 }
+            }
+            if (LastBoss != null && LastBoss.dead)
+            {
+                HandleVictory();
             }
         }
 
@@ -308,7 +313,8 @@ namespace RA2Survivors
             currentWave = null;
             if (waveQueue.Count == 0)
             {
-                HandleVictory();
+                LastBoss = enemies.Where(e => e.associatedEntity == EEntityType.Tanya).First();
+                Sound3DService.PlaySoundAtNode(player, "itanatb.wav");
                 return;
             }
             currentWave = waveQueue.Dequeue();
