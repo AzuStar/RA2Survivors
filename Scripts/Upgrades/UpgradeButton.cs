@@ -12,8 +12,8 @@ namespace RA2Survivors
 
 		public void SetText(string title, string description)
 		{
-			this.title.Text = title;
-			this.description.Text = description;
+			this.title.Text = "[center]"+title;
+			this.description.Text = "[center]"+description;
 		}
 	}
 }

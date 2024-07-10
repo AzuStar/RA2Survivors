@@ -37,7 +37,7 @@ namespace RA2Survivors
             [
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: Extended magazine shell",
+                    title = "AK47:\nExtended magazine shell",
                     description = "Increases burst count [color=#FF0000]+1[/color]",
                     callback = () =>
                     {
@@ -46,7 +46,7 @@ namespace RA2Survivors
                 },
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: Faster reload",
+                    title = "AK47:\nFaster reload",
                     description = "Reload speed [color=#FF0000]+10%[/color]",
                     callback = () =>
                     {
@@ -55,7 +55,7 @@ namespace RA2Survivors
                 },
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: Critical hit",
+                    title = "AK47:\nCritical hit",
                     description =
                         "Increases chance to critically Strke by [color=#FF0000]5%[/color]",
                     callback = () =>
@@ -68,7 +68,7 @@ namespace RA2Survivors
             [
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: You are sure?",
+                    title = "AK47:\nYou are sure?",
                     description =
                         "Grants [color=#860ac9]11%[/color] chance to replace a shot with an explosive shell that deals damage in AoE",
                     callback = () =>
@@ -78,7 +78,7 @@ namespace RA2Survivors
                 },
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: Attacking!",
+                    title = "AK47:\nAttacking!",
                     description =
                         "Slows down reload by 30%, but shoots [color=#860ac9]+2[/color] targets",
                     callback = () =>
@@ -89,7 +89,7 @@ namespace RA2Survivors
                 },
                 new UpgradeButtonSettings
                 {
-                    title = "AK47: Radiation bullets",
+                    title = "AK47:\nRadiation bullets",
                     description =
                         "Grants [color=#860ac9]4%[/color] chance to instantly kill a target",
                     callback = () =>

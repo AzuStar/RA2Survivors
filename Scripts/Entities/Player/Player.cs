@@ -73,7 +73,7 @@ namespace RA2Survivors
                 [
                     new UpgradeButtonSettings
                     {
-                        title = "Attack Speed Upgrade",
+                        title = "Attack Speed",
                         description = "Increases attack speed by [color=#FF0000]5%[/color]",
                         callback = () =>
                         {
@@ -82,7 +82,7 @@ namespace RA2Survivors
                     },
                     new UpgradeButtonSettings
                     {
-                        title = "Movement Speed Upgrade",
+                        title = "Movement Speed",
                         description = "Increases movement speed by [color=#FF0000]0.5[/color]",
                         callback = () =>
                         {
@@ -91,7 +91,7 @@ namespace RA2Survivors
                     },
                     new UpgradeButtonSettings
                     {
-                        title = "Health Regen Upgrade",
+                        title = "Health Regen",
                         description = "Increases health regen by [color=#FF0000]1% / 5s[/color]",
                         callback = () =>
                         {
@@ -100,7 +100,7 @@ namespace RA2Survivors
                     },
                     new UpgradeButtonSettings
                     {
-                        title = "Max Health Upgrade",
+                        title = "Max Health",
                         description = "Increases max health by [color=#FF0000]10[/color]",
                         callback = () =>
                         {
