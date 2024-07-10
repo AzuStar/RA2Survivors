@@ -25,7 +25,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 100,
+                        minEnemies = 5,
                         chancePastMin = 0.2f
                     },
                 ],
@@ -54,90 +54,90 @@ namespace RA2Survivors
                 waveDuration = 30,
                 waveName = "Wave 2"
             },
-            // // Wave 0100 - 0130
-            // new WaveConfig
-            // {
-            //     enemyConfig =
-            //     [
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.GI,
-            //             minEnemies = 10,
-            //             chancePastMin = 0.4f
-            //         },
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.AttackDog,
-            //             minEnemies = 2,
-            //             chancePastMin = 0.2f
-            //         },
-            //     ],
-            //     waveDuration = 30,
-            //     waveName = "Wave 3"
-            // },
-            // // Wave 0130 - 0300
-            // new WaveConfig
-            // {
-            //     enemyConfig =
-            //     [
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.GI,
-            //             minEnemies = 15,
-            //             chancePastMin = 0.4f
-            //         },
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.AttackDog,
-            //             minEnemies = 2,
-            //             chancePastMin = 0.2f
-            //         }
-            //     ],
-            //     waveDuration = 90,
-            //     waveName = "Wave 4"
-            // },
-            // // Wave 0300 - 0400
-            // new WaveConfig
-            // {
-            //     enemyConfig =
-            //     [
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.Seal,
-            //             minEnemies = 10,
-            //             chancePastMin = 0.2f
-            //         },
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.AttackDog,
-            //             minEnemies = 2,
-            //             chancePastMin = 0.2f
-            //         }
-            //     ],
-            //     waveDuration = 60,
-            //     waveName = "Wave 5"
-            // },
-            // // Wave 0400 - 0500
-            // new WaveConfig
-            // {
-            //     enemyConfig =
-            //     [
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.Seal,
-            //             minEnemies = 10,
-            //             chancePastMin = 0.4f
-            //         },
-            //         new WaveEnemyConfig
-            //         {
-            //             enemyType = EEntityType.AttackDog,
-            //             minEnemies = 2,
-            //             chancePastMin = 0.3f
-            //         }
-            //     ],
-            //     waveDuration = 60,
-            //     waveName = "Final Wave"
-            // },
+            // Wave 0100 - 0130
+            new WaveConfig
+            {
+                enemyConfig =
+                [
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.GI,
+                        minEnemies = 10,
+                        chancePastMin = 0.4f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
+                        chancePastMin = 0.2f
+                    },
+                ],
+                waveDuration = 30,
+                waveName = "Wave 3"
+            },
+            // Wave 0130 - 0300
+            new WaveConfig
+            {
+                enemyConfig =
+                [
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.GI,
+                        minEnemies = 15,
+                        chancePastMin = 0.4f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
+                        chancePastMin = 0.2f
+                    }
+                ],
+                waveDuration = 90,
+                waveName = "Wave 4"
+            },
+            // Wave 0300 - 0400
+            new WaveConfig
+            {
+                enemyConfig =
+                [
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Seal,
+                        minEnemies = 10,
+                        chancePastMin = 0.2f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
+                        chancePastMin = 0.2f
+                    }
+                ],
+                waveDuration = 60,
+                waveName = "Wave 5"
+            },
+            // Wave 0400 - 0500
+            new WaveConfig
+            {
+                enemyConfig =
+                [
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.Seal,
+                        minEnemies = 10,
+                        chancePastMin = 0.4f
+                    },
+                    new WaveEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        minEnemies = 2,
+                        chancePastMin = 0.3f
+                    }
+                ],
+                waveDuration = 60,
+                waveName = "Final Wave"
+            },
         };
 
         public SpawnEventConfig[] spawnEvents =
