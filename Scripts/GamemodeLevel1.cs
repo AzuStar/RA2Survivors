@@ -26,7 +26,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 5,
+                        minEnemies = 7,
                         chancePastMin = 0.2f
                     },
                 ],
@@ -42,7 +42,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 10,
+                        minEnemies = 15,
                         chancePastMin = 0.2f
                     },
                     new WaveEnemyConfig
@@ -63,7 +63,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 10,
+                        minEnemies = 15,
                         chancePastMin = 0.4f
                     },
                     new WaveEnemyConfig
@@ -84,7 +84,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        minEnemies = 15,
+                        minEnemies = 20,
                         chancePastMin = 0.4f
                     },
                     new WaveEnemyConfig
@@ -95,7 +95,8 @@ namespace RA2Survivors
                     }
                 ],
                 waveDuration = 90,
-                waveName = "Wave 4"
+                waveName = "Wave 4",
+                waveMusic = "BrainFreeze.mp3"
             },
             // Wave 0300 - 0400
             new WaveConfig
@@ -105,7 +106,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.Seal,
-                        minEnemies = 10,
+                        minEnemies = 20,
                         chancePastMin = 0.2f
                     },
                     new WaveEnemyConfig
@@ -126,7 +127,7 @@ namespace RA2Survivors
                     new WaveEnemyConfig
                     {
                         enemyType = EEntityType.Seal,
-                        minEnemies = 10,
+                        minEnemies = 25,
                         chancePastMin = 0.4f
                     },
                     new WaveEnemyConfig
@@ -166,6 +167,12 @@ namespace RA2Survivors
                         enemyType = EEntityType.GGI,
                         enemyCount = 1,
                         qudrant = Qudrant.Random
+                    },
+                    new SpawnEventEnemyConfig
+                    {
+                        enemyType = EEntityType.AttackDog,
+                        enemyCount = 5,
+                        qudrant = Qudrant.Random
                     }
                 ]
             },
@@ -177,7 +184,7 @@ namespace RA2Survivors
                     new SpawnEventEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        enemyCount = 6,
+                        enemyCount = 12,
                         qudrant = Qudrant.Random
                     }
                 ]
@@ -190,7 +197,7 @@ namespace RA2Survivors
                     new SpawnEventEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        enemyCount = 6,
+                        enemyCount = 12,
                         qudrant = Qudrant.Random
                     }
                 ]
@@ -203,7 +210,7 @@ namespace RA2Survivors
                     new SpawnEventEnemyConfig
                     {
                         enemyType = EEntityType.GI,
-                        enemyCount = 6,
+                        enemyCount = 12,
                         qudrant = Qudrant.Random
                     }
                 ]
@@ -293,9 +300,12 @@ namespace RA2Survivors
                     enemyConfig.enemyCount
                 );
                 foreach (Enemy enemy in enemies)
+                {
                     enemyNode.AddChild(enemy);
+                    enemy.despawnImmune = true;
+                }
 
-                while(!IsSpawnPositionValid(enemies[0]))
+                while (!IsSpawnPositionValid(enemies[0]))
                 {
                     enemies[0].GlobalPosition = SpawnerService.SpawnRangeOffset(
                         instance.player.GlobalPosition
@@ -360,7 +370,7 @@ namespace RA2Survivors
         {
             Enemy enemy = SpawnerService.SpawnEnemy(type, player.GlobalTransform.Origin);
             enemyNode.AddChild(enemy);
-            while(!IsSpawnPositionValid(enemy))
+            while (!IsSpawnPositionValid(enemy))
             {
                 enemy.GlobalPosition = SpawnerService.SpawnRangeOffset(
                     instance.player.GlobalPosition
@@ -371,7 +381,10 @@ namespace RA2Survivors
         private bool IsSpawnPositionValid(Enemy enemy)
         {
             var spaceState = instance.player.GetWorld3D().DirectSpaceState;
-            var query = PhysicsRayQueryParameters3D.Create(new Vector3(enemy.GlobalPosition.X,100,enemy.GlobalPosition.Z), new Vector3(enemy.GlobalPosition.X, -10, enemy.GlobalPosition.Z));
+            var query = PhysicsRayQueryParameters3D.Create(
+                new Vector3(enemy.GlobalPosition.X, 100, enemy.GlobalPosition.Z),
+                new Vector3(enemy.GlobalPosition.X, -10, enemy.GlobalPosition.Z)
+            );
             var result = spaceState.IntersectRay(query);
             if (result.Count > 0)
             {
@@ -380,10 +393,7 @@ namespace RA2Survivors
             return true;
         }
 
-        private void FixSpawnPosition(Enemy enemy)
-        {
-
-        }
+        private void FixSpawnPosition(Enemy enemy) { }
 
         public void SpawnExpOrb(Vector3 position, double expAmount)
         {
@@ -427,7 +437,12 @@ namespace RA2Survivors
             }
             GameEnded = true;
             Sound3DService.PlaySoundAtNode(player, "csof023.wav");
-            GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("Prefabs/UI/DefeatScene.tscn").Instantiate<Control>());
+            GetTree()
+                .Root.AddChild(
+                    ResourceLoader
+                        .Load<PackedScene>("Prefabs/UI/DefeatScene.tscn")
+                        .Instantiate<Control>()
+                );
         }
 
         public void HandleVictory()
@@ -438,7 +453,12 @@ namespace RA2Survivors
             }
             GameEnded = true;
             Sound3DService.PlaySoundAtNode(player, "csof022.wav");
-            GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("Prefabs/UI/VictoryScene.tscn").Instantiate<Control>());
+            GetTree()
+                .Root.AddChild(
+                    ResourceLoader
+                        .Load<PackedScene>("Prefabs/UI/VictoryScene.tscn")
+                        .Instantiate<Control>()
+                );
         }
     }
 }

@@ -13,10 +13,9 @@ namespace RA2Survivors
                 attackRange = 2.1,
                 damage = 200,
                 maxHealth = 200,
-                movementSpeed = 6,
+                movementSpeed = 8,
                 expDropped = 50,
             };
-            despawnImmune = true;
         }
 
         public override void OnDying()
